@@ -22,7 +22,6 @@ texto sobre o projeto
 
 <div>
 <img align="center"  height="500" width="700" src="https://user-images.githubusercontent.com/94642853/158240002-95cf16c5-f1c4-49f1-802c-de2819be83c1.jpg"/>
-"/>
 
 </div>
 
