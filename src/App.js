@@ -6,8 +6,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 const  App = () => {
   return (
     <ThemeProvider theme={theme}>
-      Hello World!
-      
+      Hello World!      
     </ThemeProvider>
   );
 };
