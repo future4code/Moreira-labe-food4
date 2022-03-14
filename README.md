@@ -21,7 +21,8 @@ texto sobre o projeto
 ### Fluxograma:
 
 <div>
-<img align="center"  height="500" width="700" src="https://user-images.githubusercontent.com/94642853/158232631-258c14fd-37f6-45c7-9c95-6bb285f0f07c.jpg"/>
+<img align="center"  height="500" width="700" src="https://user-images.githubusercontent.com/94642853/158240002-95cf16c5-f1c4-49f1-802c-de2819be83c1.jpg"/>
+"/>
 
 </div>
 
