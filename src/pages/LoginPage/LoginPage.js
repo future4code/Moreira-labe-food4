@@ -1,12 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Container, Login, Img, TextLogin, LoginForm, LoginButton, SignUpText } from './styled'
+import { Container, Login, Img, TextLogin, LoginForm, SignUpText } from './styled'
 import redLogo from '../../assets/img/redLogo.png'
-import { TextField } from '@material-ui/core';
+import { TextField, Button, CircularProgress } from '@material-ui/core';
 import { goToSignUpPage } from '../../routes/coordinators';
 import useRequest from '../../hooks/useRequest.js';
 import useForm from '../../hooks/useForm.js';
 import { baseUrl } from '../../constants/urls.js';
+
 
 const LoginPage = () => {
     const [requestData, isLoading] = useRequest();
@@ -46,11 +47,11 @@ const LoginPage = () => {
                         variant={'outlined'}
                         required
                     />
-                <LoginButton >Entrar</LoginButton>
+                <Button>{isLoading?<CircularProgress style={{"color": "white"}} size={24}/>:<>Enviar</>}</Button>
                 </LoginForm>
                 <SignUpText>
                     Não possui cadastro? 
-                    <button variant={'text'} type={'submit'} onClick={() => goToSignUpPage(navigate)} >Clique aqui</button>
+                    <Button variant={'text'} type={'submit'} onClick={() => goToSignUpPage(navigate)} >Clique aqui.</Button>
                 </SignUpText>
             </Login>
         </Container>

@@ -32,4 +32,5 @@ export const LogoIfuture = styled.img`
     width: 7.875rem;
     height: 4.063rem;
     object-fit: contain;
+    margin-bottom: 7%;
 `

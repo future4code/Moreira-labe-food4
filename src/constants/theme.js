@@ -1,5 +1,5 @@
 import { createTheme } from "@material-ui/core/styles";
-import { primaryColor, secundaryColor } from "./colors";
+import { primaryColor, secondaryColor, neutral } from "./colors";
 
 const theme = createTheme({
   palette: {
@@ -8,7 +8,11 @@ const theme = createTheme({
       contrastText: "white",     
     },
     secundary: {
-      main: secundaryColor,
+      main: secondaryColor,
+      contrastText: "black",
+    },
+    neutralColor: {
+      main: neutral,
       contrastText: "black",
     },
     // text: {
