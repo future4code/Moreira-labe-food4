@@ -14,6 +14,8 @@ const SignUpPage = () => {
     const [form, onChangeInput] = useForm({name: '', email: '', cpf: '', password: '',});
     const [pass2, setPass2] = useState('');
 
+    const navigate = useNavigate()
+
     const onChangePass2 = (evt) => {
         setPass2(evt.target.value);
     };
@@ -30,11 +32,6 @@ const SignUpPage = () => {
         }
 
     };
-
-
-const SignUpPage = () => {
-
-    const navigate = useNavigate()
     
     return (
         <Container>
@@ -106,3 +103,4 @@ const SignUpPage = () => {
 }
 
 export default SignUpPage;
+ 

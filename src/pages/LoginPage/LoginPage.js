@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Container, Login, Img, TextLogin, LoginForm, LoginButton, SignUpText } from './styled'
 import redLogo from '../../assets/img/redLogo.png'
-import { Img, LoginForm, Container, Login, TextLogin, LoginButton, SignUpText } from './styled';
 import { TextField } from '@material-ui/core';
 import { goToSignUpPage } from '../../routes/coordinators';
 import useRequest from '../../hooks/useRequest.js';
@@ -12,6 +12,8 @@ const LoginPage = () => {
     const [requestData, isLoading] = useRequest();
     const [form, onChangeInput] = useForm({email: '', password: ''});
 
+    const navigate = useNavigate()
+
     const onSubmitForm = async (evt) => {
         evt.preventDefault(); 
 
@@ -19,11 +21,6 @@ const LoginPage = () => {
 
         console.log(response);
     }
-
-
-const LoginPage = () => {
-    
-    const navigate = useNavigate()
 
     return (
         <Container>
@@ -58,6 +55,7 @@ const LoginPage = () => {
             </Login>
         </Container>
     )
+
 }
 
 export default LoginPage;
