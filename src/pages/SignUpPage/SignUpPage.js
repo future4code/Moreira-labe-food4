@@ -1,7 +1,7 @@
 import React from 'react';
 import redLogo from '../../assets/img/redLogo.png'
 import BackToLogin from '../../assets/img/backToLogin.png';
-import { Container, SignUp, Img, TextSignUp, SignUpForm, SignUpButton, SignUpText, Bar, Arrow  } from './styled';
+import * as S from './styled';
 import { TextField } from '@material-ui/core';
 
 
@@ -11,16 +11,16 @@ import { TextField } from '@material-ui/core';
 
 const SignUpPage = () => {
     return (
-        <Container>
-            <SignUp>
-                <Bar>
-                    <Arrow src={BackToLogin} alt="Back to login icon"/>
-                </Bar>
-                <Img src={redLogo} alt="Ifuture logo"/>
-                <TextSignUp>
+        <S.Container>
+            <S.SignUp>
+                <S.Bar>
+                    <S.Arrow src={BackToLogin} alt="Back to login icon"/>
+                </S.Bar>
+                <S.Img src={redLogo} alt="Ifuture logo"/>
+                <S.TextSignUp>
                     <p>Cadastrar</p>
-                </TextSignUp> 
-                <SignUpForm>
+                </S.TextSignUp> 
+                <S.SignUpForm>
                     <TextField
                         label={'Nome'}
                         placeholder={'Nome e sobrenome'}
@@ -55,10 +55,10 @@ const SignUpPage = () => {
                         variant={'outlined'}
                         requerid
                     />
-                    <SignUpButton>Criar</SignUpButton>
-                </SignUpForm>
-            </SignUp>
-        </Container>
+                    <S.SignUpButton>Criar</S.SignUpButton>
+                </S.SignUpForm>
+            </S.SignUp>
+        </S.Container>
     )
 }
 

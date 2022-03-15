@@ -1,40 +1,39 @@
-import React from 'react';
-import redLogo from '../../assets/img/redLogo.png'
-import { Img, LoginForm, Container, Login, TextLogin, LoginButton, SignUpText } from './styled';
-import { TextField } from '@material-ui/core';
-
-
-
-
+import React from "react";
+import redLogo from "../../assets/img/redLogo.png";
+import * as L from "./styled";
+import { TextField } from "@material-ui/core";
 
 const LoginPage = () => {
-    return (
-        <Container>
-            <Login>
-                <Img src={redLogo}/>
-                <TextLogin>Entrar</TextLogin> 
-                <LoginForm>
-                    <TextField
-                        label={'Email'}
-                        type={'email'}
-                        variant={'outlined'}
-                        requerid
-                    />
-                    <TextField
-                    label={'Senha'}
-                    type={'password'}
-                    variant={'outlined'}
-                    requerid
-                    />
-                <LoginButton >Entrar</LoginButton>
-                <SignUpText>
-                    Não possui cadastro? 
-                    <button variant={'text'} type={'submit'}>Clique aqui</button>
-                </SignUpText>
-                </LoginForm>
-            </Login>
-        </Container>
-    )
-}
+  return (
+    <L.Container>
+      <L.Login>
+        <L.Img src={redLogo} />
+        <L.TextLogin>Entrar</L.TextLogin>
+        <L.LoginForm>
+          <TextField
+            label={"Email"}
+            type={"email"}
+            variant={"outlined"}
+            requerid
+          />
+          <TextField
+            label={"Senha"}
+            type={"password"}
+            variant={"outlined"}
+            requerid
+          />
+
+          <L.LoginButton>Entrar</L.LoginButton>
+          <L.SignUpText>
+            Não possui cadastro?
+            <L.button variant={"text"} type={"submit"}>
+              Clique aqui
+            </L.button>
+          </L.SignUpText>
+        </L.LoginForm>
+      </L.Login>
+    </L.Container>
+  );
+};
 
 export default LoginPage;
