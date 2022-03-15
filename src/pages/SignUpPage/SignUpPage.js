@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import redLogo from '../../assets/img/redLogo.png'
 import BackToLogin from '../../assets/img/backToLogin.png';
-import { Container, SignUp, Bar, Arrow, Img, TextSignUp, SignUpForm, SignUpButton } from './styled'
-import { formatMs, TextField } from '@material-ui/core';
+import { Container, SignUp, Bar, Arrow, Img, TextSignUp, SignUpForm } from './styled'
+import { TextField, Button, CircularProgress } from '@material-ui/core';
 import useRequest from '../../hooks/useRequest.js';
 import useForm from '../../hooks/useForm.js';
 import { baseUrl } from '../../constants/urls';
@@ -67,7 +67,7 @@ const SignUpPage = () => {
                     />
                     <TextField
                         label={'CPF'}
-                        type={'number'}
+                        type={'text'}
                         placeholder={'000.000.000-00'}
                         variant={'outlined'}
                         name={'cpf'}
@@ -97,7 +97,7 @@ const SignUpPage = () => {
                         onChange={onChangePass2}
                         required
                     />
-                    <SignUpButton>Criar</SignUpButton>
+                    <Button>{isLoading?<CircularProgress style={{"color": "white"}} size={24}/>:<>Criar</>}</Button>
                 </SignUpForm>
             </SignUp>
         </Container>

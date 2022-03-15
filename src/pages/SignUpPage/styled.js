@@ -80,24 +80,27 @@ export const TextSignUp = styled.div`
 export const SignUpForm = styled.form`
   display: grid;
   gap: 16px;
-`
-
-export const SignUpButton = styled.button`
-  width: 20.5rem;
-  height: 2.625rem;
-  padding: 0.75rem 1rem;
-  border-radius: 2px;
-  border: none;
-  font-family: "Roboto", sans-serif;
-  font-size: 1rem;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: -0.39px;
-  text-align: center;
-  cursor: pointer;
-  background-color: #e8222e; 
+  button{
+    width: 20.5rem;
+    height: 2.625rem;
+    padding: 0.75rem 1rem;
+    border-radius: 2px;
+    border: none;
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -0.39px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #e8222e;
+    text-transform: capitalize;
+  }
+  button:hover{
+    background-color: #e8222e;
+  };
 `
 
 export const SignUpText = styled.p`
