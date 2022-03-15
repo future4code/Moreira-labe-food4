@@ -5,12 +5,13 @@ import { TextField, Button, CircularProgress } from '@material-ui/core';
 import { useNavigate } from 'react-router-dom';
 import { goBack } from '../../routes/coordinators';
 import useRequest from '../../hooks/useRequest';
+import useProtectedPage from '../../hooks/useProtectedPage';
 
 
 
 
 const SignUpAdressPage = () => {
-
+    useProtectedPage();
     
     const [requestData, isLoading] = useRequest();
     

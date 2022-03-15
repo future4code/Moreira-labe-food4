@@ -3,13 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import { Container, Login, Img, TextLogin, LoginForm, SignUpText } from './styled'
 import redLogo from '../../assets/img/redLogo.png'
 import { TextField, Button, CircularProgress } from '@material-ui/core';
-import { goToSignUpPage } from '../../routes/coordinators';
+import { goToFeedPage, goToSignUpPage } from '../../routes/coordinators';
 import useRequest from '../../hooks/useRequest.js';
 import useForm from '../../hooks/useForm.js';
 import { baseUrl } from '../../constants/urls.js';
-
+import useProtectedPage from '../../hooks/useProtectedPage';
 
 const LoginPage = () => {
+    useProtectedPage();
+
     const [requestData, isLoading] = useRequest();
     const [form, onChangeInput] = useForm({email: '', password: ''});
 
@@ -18,9 +20,12 @@ const LoginPage = () => {
     const onSubmitForm = async (evt) => {
         evt.preventDefault(); 
 
-        const response = await requestData(`${baseUrl}login`, 'post', form);
+        const {token} = await requestData(`${baseUrl}login`, 'post', form);
 
-        console.log(response);
+        localStorage.setItem('token', token);
+
+        goToFeedPage(navigate);
+        console.log(token);
     }
 
     return (
@@ -47,11 +52,11 @@ const LoginPage = () => {
                         variant={'outlined'}
                         required
                     />
-                <Button>{isLoading?<CircularProgress style={{"color": "white"}} size={24}/>:<>Enviar</>}</Button>
+                <Button type={'submit'}>{isLoading?<CircularProgress style={{"color": "white"}} size={24}/>:<>Enviar</>}</Button>
                 </LoginForm>
                 <SignUpText>
                     Não possui cadastro? 
-                    <Button variant={'text'} type={'submit'} onClick={() => goToSignUpPage(navigate)} >Clique aqui.</Button>
+                    <Button variant={'text'} type={'button'} onClick={() => goToSignUpPage(navigate)} >Clique aqui.</Button>
                 </SignUpText>
             </Login>
         </Container>
