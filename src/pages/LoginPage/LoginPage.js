@@ -3,6 +3,7 @@ import redLogo from "../../assets/img/redLogo.png";
 import * as L from "./styled";
 import { TextField } from "@material-ui/core";
 
+
 const LoginPage = () => {
   return (
     <L.Container>
@@ -35,6 +36,5 @@ const LoginPage = () => {
     </L.Container>
   );
 };
-
 
 export default LoginPage;

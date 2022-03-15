@@ -6,6 +6,8 @@ export const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100%;
+    width: 100%;
     background-color: #0a0909;
 `
 export const Login = styled.div`
@@ -19,7 +21,11 @@ export const Login = styled.div`
     border: 1px solid #bcb5b9;
     border-radius: 30px;
     background-color: white;
-    margin-bottom: 2%;
+        @media screen and (max-width: 760px) {
+              width: 100vw;
+              height: 100vh;
+              border-radius: 0;
+          }
 ` 
 
 export const Img = styled.img`
@@ -66,8 +72,6 @@ export const LoginButton = styled.button`
 `
 
 export const SignUpText = styled.p`
-  margin-left: 50%;
-  transform: translate(-50%);
   margin-top: 5%;
   width: 18.5rem;
   height: 1.125rem;
