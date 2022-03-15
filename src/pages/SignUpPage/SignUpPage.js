@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import redLogo from '../../assets/img/redLogo.png'
 import BackToLogin from '../../assets/img/backToLogin.png';
 import { Container, SignUp, Img, TextSignUp, SignUpForm, SignUpButton, SignUpText, Bar, Arrow  } from './styled';
@@ -6,6 +7,7 @@ import { formatMs, TextField } from '@material-ui/core';
 import useRequest from '../../hooks/useRequest.js';
 import useForm from '../../hooks/useForm.js';
 import { baseUrl } from '../../constants/urls';
+import { goBack } from '../../routes/coordinators';
 
 const SignUpPage = () => {
     const [requestData, isLoading] = useRequest();
@@ -29,11 +31,16 @@ const SignUpPage = () => {
 
     };
 
+
+const SignUpPage = () => {
+
+    const navigate = useNavigate()
+    
     return (
         <Container>
             <SignUp>
                 <Bar>
-                    <Arrow src={BackToLogin} alt="Back to login icon"/>
+                    <Arrow src={BackToLogin} onClick={() => goBack(navigate)} alt="Back to login icon"/>
                 </Bar>
                 <Img src={redLogo} alt="Ifuture logo"/>
                 <TextSignUp>

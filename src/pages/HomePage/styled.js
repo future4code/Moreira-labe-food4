@@ -6,6 +6,8 @@ export const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100%;
+    width: 100%;
     background-color: #0a0909;
 `
 export const HomeScreen = styled.div`
@@ -19,7 +21,11 @@ export const HomeScreen = styled.div`
     border: none;
     border-radius: 30px;
     background-color: #e8222e;
-    margin-bottom: 2%;
+        @media screen and (max-width: 760px) {
+            width: 100vw;
+            height: 100vh;
+            border-radius: 0;
+        }
 `
 
 export const LogoIfuture = styled.img`

@@ -1,7 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import redLogo from '../../assets/img/redLogo.png'
 import { Img, LoginForm, Container, Login, TextLogin, LoginButton, SignUpText } from './styled';
 import { TextField } from '@material-ui/core';
+import { goToSignUpPage } from '../../routes/coordinators';
 import useRequest from '../../hooks/useRequest.js';
 import useForm from '../../hooks/useForm.js';
 import { baseUrl } from '../../constants/urls.js';
@@ -17,6 +19,11 @@ const LoginPage = () => {
 
         console.log(response);
     }
+
+
+const LoginPage = () => {
+    
+    const navigate = useNavigate()
 
     return (
         <Container>
@@ -46,7 +53,7 @@ const LoginPage = () => {
                 </LoginForm>
                 <SignUpText>
                     Não possui cadastro? 
-                    <button variant={'text'} type={'submit'}>Clique aqui</button>
+                    <button variant={'text'} type={'submit'} onClick={() => goToSignUpPage(navigate)} >Clique aqui</button>
                 </SignUpText>
             </Login>
         </Container>
