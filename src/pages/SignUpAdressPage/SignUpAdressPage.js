@@ -6,16 +6,31 @@ import { useNavigate } from 'react-router-dom';
 import { goBack } from '../../routes/coordinators';
 import useRequest from '../../hooks/useRequest';
 import useProtectedPage from '../../hooks/useProtectedPage';
-
-
+import { useForm } from 'react-hook-form';
 
 
 const SignUpAdressPage = () => {
-    useProtectedPage();
+   useProtectedPage();
     
     const [requestData, isLoading] = useRequest();
     
     const navigate = useNavigate()
+
+  const {register, setValue, setFocus} = useForm();
+  const checkCEP = (e) => {
+    const cep = e.target.value.replace(/\D/g, '');
+    console.log(cep);
+    fetch(`https://viacep.com.br/ws/${cep}/json/`).then(res => res.json()).then(data => {
+      console.log(data);
+      // register({ name: 'address', value: data.logradouro });
+      setValue('address', data.logradouro);
+      setValue('neighborhood', data.bairro);
+      setValue('complement', data.complemento)
+      setValue('city', data.localidade);
+      setValue('uf', data.uf);
+      setFocus('addressNumber');
+    });
+  }
 
     return (
         <Container>
@@ -29,46 +44,42 @@ const SignUpAdressPage = () => {
                 <AdressForm>
                     <TextField
                         label={'Logadouro'}
-                        type={'text'}
-                        placeholder={'Rua / Avenida'}
+                        type={'text'} {...register("cep")} onBlur={checkCEP}
+                        //placeholder={'Rua / Avenida'}
                         variant={'outlined'}
-                        requerid
-                    />
+                        required                    />
                     <TextField
                         label={'Número'}
-                        type={'number'}
-                        placeholder={'Número'}
+                        type={'number'} {...register("addressNumber" )}
+                        //placeholder={'Número'}
                         variant={'outlined'}
-                        requerid
-                    />
+                        required                    />
                     <TextField
                         label={'Complemento'}
-                        type={'text'}
-                        placeholder={'Apto. / Bloco'}
+                        type={'text'} {...register("complement" )}
+                       // placeholder={'Apto. / Bloco'}
                         variant={'outlined'}
-                        requerid
+                        required
                     />
                     <TextField
                         label={'Bairro'}
-                        type={'text'}
-                        placeholder={'Bairro'}
+                        type={'text'} {...register("neighborhood" )}
+                       // placeholder={'Bairro'}
                         variant={'outlined'}
-                        requerid
+                        required
                     />
                     <TextField
-                        label={'Cidade'}
-                        type={'text'}
-                        placeholder={'Cidade'}
+                        label={'Cidade'} 
+                        type={'text'} {...register("city" )}
+                        //placeholder={'Cidade'}
                         variant={'outlined'}
-                        requerid
-                    />
+                        required                    />
                     <TextField
                         label={'Estado'}
-                        type={'text'}
-                        placeholder={'Estado'}
+                        type={'text'} {...register("uf" )}
+                        //placeholder={'Estado'}
                         variant={'outlined'}
-                        requerid
-                    />
+                        required                    />
                      <Button>{isLoading?<CircularProgress style={{"color": "white"}} size={24}/>:<>Salvar</>}</Button>
                 </AdressForm>
             </Adress>
