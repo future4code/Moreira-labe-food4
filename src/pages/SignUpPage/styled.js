@@ -23,7 +23,7 @@ export const SignUp = styled.div`
 `
 export const Bar = styled.div`
     width: 22.5rem;
-    height: 16rem;
+    height: 40rem;
     box-shadow: 0 0.5px 0 0 rgba(0, 0, 0, 0.25);
     background-color: #fff;
     border-top-left-radius: 20px;
@@ -32,15 +32,15 @@ export const Bar = styled.div`
 
 export const Arrow = styled.img`
     width: 1.44rem;
-    height: 1.5rem;
-    margin: 0.625rem 20.06rem 0 1rem;
+    height: 1.2rem;
+    margin: 1.5rem 20.06rem 1rem 1rem;
     object-fit: contain;
 `
 
 export const Img = styled.img`
     width: 6.5rem;
     height: 3.625rem;
-    margin: 1.5rem 8rem 1rem;
+    margin: 1.5rem 10rem 0;
     object-fit: contain;
 `
 export const TextSignUp = styled.div`
@@ -49,7 +49,7 @@ export const TextSignUp = styled.div`
     height: 2.625rem;
     margin: 1rem 0 0;
     padding: 0.75rem 2rem;
-    margin-bottom: 5%;
+    margin-bottom: 2%;
         p{
             width: 18.5rem;
             height: 1.125rem;
