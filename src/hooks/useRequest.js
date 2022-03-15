@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const useRequest = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -20,10 +20,6 @@ const useRequest = () => {
             return data;
         };
     };
-
-    useEffect(() => {
-        requestData();
-    }, [url])
 
     return [requestData, isLoading];
 };
