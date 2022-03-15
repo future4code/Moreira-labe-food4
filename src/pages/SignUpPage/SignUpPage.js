@@ -7,10 +7,13 @@ import { TextField, Button, CircularProgress } from '@material-ui/core';
 import useRequest from '../../hooks/useRequest.js';
 import useForm from '../../hooks/useForm.js';
 import { baseUrl } from '../../constants/urls';
-import { goBack } from '../../routes/coordinators';
+import { goBack, goToSignUpAdressPage } from '../../routes/coordinators';
+import useProtectedPage from '../../hooks/useProtectedPage';
 
 
 const SignUpPage = () => {
+    useProtectedPage();
+
     const [requestData, isLoading] = useRequest();
     const [form, onChangeInput] = useForm({name: '', email: '', cpf: '', password: '',});
     const [pass2, setPass2] = useState('');
@@ -24,14 +27,18 @@ const SignUpPage = () => {
     const onSubmitForm = async (evt) => {
         evt.preventDefault();
 
+        console.log('faz alguma coisa')
+
         if (form.password === pass2) {
-            const result = await requestData(`${baseUrl}signup` , 'post', form);
-            console.log(result);
+            const {token} = await requestData(`${baseUrl}signup` , 'post', form);
+            console.log(token);
+            localStorage.setItem('token', token);
         }
         else {
             alert('Senhas não correspondem')
         }
 
+        goToSignUpAdressPage(navigate);
     };
     
     return (
@@ -97,7 +104,7 @@ const SignUpPage = () => {
                         onChange={onChangePass2}
                         required
                     />
-                    <Button>{isLoading?<CircularProgress style={{"color": "white"}} size={24}/>:<>Criar</>}</Button>
+                    <Button type='submit'>{isLoading?<CircularProgress style={{"color": "white"}} size={24}/>:<>Criar</>}</Button>
                 </SignUpForm>
             </SignUp>
         </Container>
