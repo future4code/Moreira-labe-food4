@@ -1,30 +1,38 @@
 import React from 'react';
-import styled from 'styled-components'
-import imgFood from '../../assets/img/imgFood.png'
-import { Img, LoginForm, Container } from './styled';
-import { Typography } from '@material-ui/core';
-import { TextField, Button } from '@material-ui/core';
+import redLogo from '../../assets/img/redLogo.png'
+import { Img, LoginForm, Container, Login, TextLogin, LoginButton, SignUpText } from './styled';
+import { TextField } from '@material-ui/core';
+
+
+
+
 
 const LoginPage = () => {
     return (
         <Container>
-            <Img src={imgFood}/>
-            <Typography variant="h3">Login</Typography> 
-            <LoginForm>
-                <TextField
-                    label={'Email'}
-                    type={'email'}
+            <Login>
+                <Img src={redLogo}/>
+                <TextLogin>Entrar</TextLogin> 
+                <LoginForm>
+                    <TextField
+                        label={'Email'}
+                        type={'email'}
+                        variant={'outlined'}
+                        requerid
+                    />
+                    <TextField
+                    label={'Senha'}
+                    type={'password'}
+                    variant={'outlined'}
                     requerid
-                />
-                <TextField
-                label={'Senha'}
-                type={'password'}
-                requerid
-                />
-               <Button variant={'contained'} color={'primary'} type={'submit'}>Entrar</Button>
-               <Button variant={'text'} color={'secundary'} type={'submit'}>Não Possui cadastro? Clique aqui</Button>
-            
-            </LoginForm>
+                    />
+                <LoginButton >Entrar</LoginButton>
+                <SignUpText>
+                    Não possui cadastro? 
+                    <button variant={'text'} type={'submit'}>Clique aqui</button>
+                </SignUpText>
+                </LoginForm>
+            </Login>
         </Container>
     )
 }
