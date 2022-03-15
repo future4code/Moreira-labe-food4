@@ -1,17 +1,17 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from '../pages/LoginPage/LoginPage.js'
+import HomePage from '../pages/HomePage/HomePage.js'
 import LoginPage from '../pages/LoginPage/LoginPage.js'
-import SignUpPage from '../pages/LoginPage/LoginPage.js'
-import SignUpAdressPage from '../pages/LoginPage/LoginPage.js'
-import FeedPage from '../pages/LoginPage/LoginPage.js'
-import SearchPage from '../pages/LoginPage/LoginPage.js'
-import RestaurantPage from '../pages/LoginPage/LoginPage.js'
-import CartPage from '../pages/LoginPage/LoginPage.js'
-import UserProfilePage from '../pages/LoginPage/LoginPage.js'
-import ChangeUserInfoPage from '../pages/LoginPage/LoginPage.js'
-import ChangeAdressPage from '../pages/LoginPage/LoginPage.js'
-import ErrorPage from '../pages/LoginPage/ErrorPage.js'
+import SignUpPage from '../pages/SignUpPage/SignUpPage.js'
+import SignUpAdressPage from '../pages/SignUpAdressPage/SignUpAdressPage.js'
+import FeedPage from '../pages/FeedPage/FeedPage.js'
+import SearchPage from '../pages/SearchPage/SearchPage.js'
+import RestaurantPage from '../pages/RestaurantPage/RestaurantPage.js'
+import CartPage from '../pages/CartPage/CartPage.js'
+import UserProfilePage from '../pages/UserProfilePage/UserProfilePage.js'
+import ChangeUserInfoPage from '../pages/ChangeUserInfoPage/ChangeUserInfoPage.js'
+import ChangeAdressPage from '../pages/ChangeAdressPage/ChangeAdressPage.js'
+import ErrorPage from '../pages/ErrorPage/ErrorPage.js'
 
 const Router = () => {
     return (
