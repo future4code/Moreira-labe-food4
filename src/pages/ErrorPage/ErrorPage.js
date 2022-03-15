@@ -1,9 +1,9 @@
 import React from "react";
 
-const ChangeAdressPage = () => {
+const ErrorPage = () => {
     return (
         <>
         </>
     );
 };
-export default ChangeAdressPage; 
+export default ErrorPage;
