@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import redLogo from '../../assets/img/redLogo.png'
 import BackToLogin from '../../assets/img/backToLogin.png';
-import * as S from './styled';
-import { TextField } from '@material-ui/core';
+import { Container, SignUp, Bar, Arrow, Img, TextSignUp, SignUpForm, SignUpButton } from './styled'
 import { formatMs, TextField } from '@material-ui/core';
 import useRequest from '../../hooks/useRequest.js';
 import useForm from '../../hooks/useForm.js';
@@ -30,20 +29,13 @@ const SignUpPage = () => {
             console.log(result);
         }
         else {
-            alert('senhas não correspondem')
+            alert('Senhas não correspondem')
         }
 
     };
     
     return (
 
-        <S.Container>
-            <S.SignUp>
-                <S.Bar>
-                    <S.Arrow src={BackToLogin} alt="Back to login icon"/>
-                </S.Bar>
-                <S.Img src={redLogo} alt="Ifuture logo"/>
-                <S.TextSignUp>
         <Container>
             <SignUp>
                 <Bar>
@@ -52,8 +44,7 @@ const SignUpPage = () => {
                 <Img src={redLogo} alt="Ifuture logo"/>
                 <TextSignUp>
                     <p>Cadastrar</p>
-                </S.TextSignUp> 
-                <S.SignUpForm>                 
+                </TextSignUp>                
                 <SignUpForm onSubmit={onSubmitForm}>
                     <TextField
                         label={'Nome'}
@@ -106,12 +97,12 @@ const SignUpPage = () => {
                         onChange={onChangePass2}
                         required
                     />
-                    <S.SignUpButton>Criar</S.SignUpButton>
-                </S.SignUpForm>
-            </S.SignUp>
-        </S.Container>
+                    <SignUpButton>Criar</SignUpButton>
+                </SignUpForm>
+            </SignUp>
+        </Container>
     )
-}
+};
 
 export default SignUpPage;
  
