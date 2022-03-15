@@ -6,7 +6,10 @@ export const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100%;
+    width: 100%;
     background-color: #0a0909;
+    overflow-x: hidden;
 `
 export const Adress = styled.div`
     display: flex;
@@ -19,7 +22,13 @@ export const Adress = styled.div`
     border: 1px solid #bcb5b9;
     border-radius: 30px;
     background-color: white;
-    margin-bottom: 2%;
+        @media screen and (max-width: 760px) {
+              width: 100vw;
+              height: 100vh;
+              border-radius: 0;
+              border: none;
+              overflow-x: hidden;
+          }
 `
 export const Bar = styled.div`
     width: 22.5rem;
@@ -28,6 +37,11 @@ export const Bar = styled.div`
     background-color: #fff;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+        @media screen and (max-width: 760px) {
+              border-radius: 0;
+              height: 4rem;
+              width: 100%;
+    }
 `
 
 export const Arrow = styled.img`

@@ -1,13 +1,17 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import redLogo from '../../assets/img/redLogo.png'
 import { Img, LoginForm, Container, Login, TextLogin, LoginButton, SignUpText } from './styled';
 import { TextField } from '@material-ui/core';
-
+import { goToSignUpPage } from '../../routes/coordinators';
 
 
 
 
 const LoginPage = () => {
+    
+    const navigate = useNavigate()
+
     return (
         <Container>
             <Login>
@@ -18,20 +22,20 @@ const LoginPage = () => {
                         label={'Email'}
                         type={'email'}
                         variant={'outlined'}
-                        requerid
+                        requered
                     />
                     <TextField
-                    label={'Senha'}
-                    type={'password'}
-                    variant={'outlined'}
-                    requerid
+                        label={'Senha'}
+                        type={'password'}
+                        variant={'outlined'}
+                        required
                     />
-                <LoginButton >Entrar</LoginButton>
+                <LoginButton>Entrar</LoginButton>
+                </LoginForm>
                 <SignUpText>
                     Não possui cadastro? 
-                    <button variant={'text'} type={'submit'}>Clique aqui</button>
+                    <button variant={'text'} type={'submit'} onClick={() => goToSignUpPage(navigate)} >Clique aqui</button>
                 </SignUpText>
-                </LoginForm>
             </Login>
         </Container>
     )
