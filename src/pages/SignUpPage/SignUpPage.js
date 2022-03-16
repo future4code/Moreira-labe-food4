@@ -8,12 +8,8 @@ import useRequest from '../../hooks/useRequest.js';
 import useForm from '../../hooks/useForm.js';
 import { baseUrl } from '../../constants/urls';
 import { goBack, goToSignUpAdressPage } from '../../routes/coordinators';
-import useProtectedPage from '../../hooks/useProtectedPage';
-
 
 const SignUpPage = () => {
-    useProtectedPage();
-
     const [requestData, isLoading] = useRequest();
     const [form, onChangeInput] = useForm({name: '', email: '', cpf: '', password: '',});
     const [pass2, setPass2] = useState('');
@@ -78,10 +74,10 @@ const SignUpPage = () => {
                         placeholder={'000.000.000-00'}
                         variant={'outlined'}
                         name={'cpf'}
-                        value={form.cpf}
+                        value={form.cpf.replace(/^(\d{3})\D*(\d{3})\D*(\d{3})\D*(\d{2})$/g,'$1.$2.$3-$4')}
                         onChange={onChangeInput}
-                        pattern="\d{3}.\d{3}.\d{3}-\d{2}"
                         title='Digite seu CPF com pontos e traço'
+                        inputProps={{ maxLength: 12 }}
                         required
                     />
                     <TextField

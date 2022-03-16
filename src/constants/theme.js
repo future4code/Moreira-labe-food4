@@ -15,9 +15,6 @@ const theme = createTheme({
       main: neutral,
       contrastText: "black",
     },
-    // text: {
-    //   primary: neutralColor,
-    // },
   },
 });
 
