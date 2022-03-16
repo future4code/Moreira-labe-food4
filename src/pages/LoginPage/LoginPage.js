@@ -5,7 +5,7 @@ import redLogo from '../../assets/img/redLogo.png'
 import { TextField, Button, CircularProgress } from '@material-ui/core';
 import { goToFeedPage, goToSignUpPage } from '../../routes/coordinators';
 import useRequest from '../../hooks/useRequest.js';
-import useForm from '../../hooks/useForm.js';
+import useFormHook from '../../hooks/useFormHook.js';
 import { baseUrl } from '../../constants/urls.js';
 import useProtectedPage from '../../hooks/useProtectedPage';
 
@@ -13,7 +13,7 @@ const LoginPage = () => {
     useProtectedPage();
 
     const [requestData, isLoading] = useRequest();
-    const [form, onChangeInput] = useForm({email: '', password: ''});
+    const [form, onChangeInput] = useFormHook({email: '', password: ''});
 
     const navigate = useNavigate()
 

@@ -5,13 +5,13 @@ import BackToLogin from '../../assets/img/backToLogin.png';
 import { Container, SignUp, Bar, Arrow, Img, TextSignUp, SignUpForm } from './styled'
 import { TextField, Button, CircularProgress } from '@material-ui/core';
 import useRequest from '../../hooks/useRequest.js';
-import useForm from '../../hooks/useForm.js';
+import useFormHook from '../../hooks/useFormHook.js';
 import { baseUrl } from '../../constants/urls';
 import { goBack, goToSignUpAdressPage } from '../../routes/coordinators';
 
 const SignUpPage = () => {
     const [requestData, isLoading] = useRequest();
-    const [form, onChangeInput] = useForm({name: '', email: '', cpf: '', password: '',});
+    const [form, onChangeInput] = useFormHook({name: '', email: '', cpf: '', password: '',});
     const [pass2, setPass2] = useState('');
 
     const navigate = useNavigate()

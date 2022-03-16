@@ -20,7 +20,7 @@ const HomePage = () => {
         <Container>
             <HomeScreen>
                 <LogoIfuture src={Logo} alt="Ifuture Logo"/>
-                <CircularProgress color={'neutralColor'} style={{"color": "white"}} size={48}/>
+                <CircularProgress style={{"color": "white"}} size={48}/>
             </HomeScreen>
         </Container>
     )

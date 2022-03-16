@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { goToFeedPage } from '../routes/coordinators.js'
 
 const useProtectedPage = () => {
-    const navigate = useNavigate();
+   const navigate = useNavigate();
 
     useEffect(() => {
         const token = localStorage.getItem('token');
