@@ -10,6 +10,7 @@
     "axios": "^0.26.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-hook-form": "^7.28.0",
     "react-router-dom": "^6.2.2",
     "react-scripts": "^5.0.0",
     "react-toastify": "^8.2.0",

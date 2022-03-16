@@ -10,11 +10,10 @@ import useForm from '../../hooks/useForm';
 import header, { mainHeader } from '../../constants/headers';
 import ToastAnimated, { showToast } from '../../constants/ui-lib';
 import useProtectedPage from '../../hooks/useProtectedPage';
+import { useForm } from 'react-hook-form';
 
-
-
-
-const SignUpAdressPage = () => {   
+const SignUpAdressPage = () => {
+    useProtectedPage();
     const navigate = useNavigate() 
     const [requestData, isLoading] = useRequest();
     const [form, onChangeInput] = useForm({street: '', number: '', neighbourhood: '', city: '', state: '', complement:''});
@@ -22,22 +21,28 @@ const SignUpAdressPage = () => {
     const onSubmitAdress = async (evt) => {
         evt.preventDefault();
 
-        console.log('faz alguma coisa')
-
-        const {token} = await requestData(`${baseUrl}address`, 'put', form, header);
-        console.log(token);
-         localStorage.setItem('newToken', token);
-        if(mainHeader !== null){
-            goToLoginPage(navigate);
-            console.log('oi');
-        }
-        else{
-            showToast({ type: "error", message: "Infelizmente não foi possível fazer o cadastro" });
-        } 
-
-    };
-    
-    return (
+    const {register, setValue, setFocus} = useForm();
+    const checkCEP = (e) => {
+    const cep = e.target.value.replace(/\D/g, '');
+      fetch(`https://viacep.com.br/ws/${cep}/json/`).then(res => res.json()).then(data => {
+        setValue('address', data.logradouro);
+        setValue('neighborhood', data.bairro);
+        setValue('complement', data.complemento)
+        setValue('city', data.localidade);
+        setValue('uf', data.uf);
+        setFocus('addressNumber');
+      });
+    }
+  
+  const {token} = await requestData(`${baseUrl}address`, 'put', form, header);
+  localStorage.setItem('newToken', token);
+  if(mainHeader !== null){
+    goToLoginPage(navigate);
+  }
+  else{
+    showToast({ type: "error", message: "Infelizmente não foi possível fazer o cadastro" });
+  }
+  return (
         <Container>
             <ToastAnimated/>
             <Adress>
@@ -49,59 +54,88 @@ const SignUpAdressPage = () => {
                 </TextAdress> 
                 <AdressForm onSubmit={onSubmitAdress}>
                     <TextField
-                        label={'Logadouro'}
-                        type={'text'}
-                        placeholder={'Rua / Avenida'}
+                        label={'CEP'}
+                        type={'number'} {...register("cep")} onBlur={checkCEP}
+                        //placeholder={'Rua / Avenida'}
                         variant={'outlined'}
+
+                        required                    
+                    <TextField
+                        label={'Logradouro'}
+                        type={'text'} {...register("address" )}
+                        //placeholder={'Número'}
+                        variant={'outlined'}
+                        required                    
+
                         name={'street'}
                         value={form.street}
                         onChange={onChangeInput}
                         required
                     />
+
                     <TextField
                         label={'Número'}
-                        type={'number'}
-                        placeholder={'Número'}
+                        type={'number'} {...register("addressNumber" )}
+                        //placeholder={'Número'}
                         variant={'outlined'}
+
+                        required                    
+
                         name={'number'}
                         value={form.number}
                         onChange={onChangeInput}
                         required
                     />
+
                     <TextField
                         label={'Complemento'}
-                        type={'text'}
-                        placeholder={'Apto. / Bloco'}
+                        type={'text'} {...register("complement" )}
+                       // placeholder={'Apto. / Bloco'}
                         variant={'outlined'}
+
+                        
+
                         name={'complement'}
                         value={form.complement}
                         onChange={onChangeInput}
+
                     />
                     <TextField
                         label={'Bairro'}
-                        type={'text'}
-                        placeholder={'Bairro'}
+                        type={'text'} {...register("neighborhood" )}
+                       // placeholder={'Bairro'}
                         variant={'outlined'}
+
+
                         name={'neighbourhood'}
                         value={form.neighbourhood}
                         onChange={onChangeInput}
+
                         required
                     />
                     <TextField
-                        label={'Cidade'}
-                        type={'text'}
-                        placeholder={'Cidade'}
+                        label={'Cidade'} 
+                        type={'text'} {...register("city" )}
+                        //placeholder={'Cidade'}
                         variant={'outlined'}
+
+                        required                    
+
                         name={'city'}
                         value={form.city}
                         onChange={onChangeInput}
                         required
                     />
+
                     <TextField
                         label={'Estado'}
-                        type={'text'}
-                        placeholder={'Estado'}
+                        type={'text'} {...register("uf" )}
+                        //placeholder={'Estado'}
                         variant={'outlined'}
+
+                        required                   
+                     <Button>{isLoading?<CircularProgress style={{"color": "white"}} size={24}/>:<>Salvar</>}</Button>
+
                         name={'state'}
                         value={form.state}
                         onChange={onChangeInput}
