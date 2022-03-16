@@ -22,7 +22,7 @@ const LoginPage = () => {
 
         const {token} = await requestData(`${baseUrl}login`, 'post', form);
 
-        localStorage.setItem('token', token);
+        localStorage.setItem('newToken', token);
 
         goToFeedPage(navigate);
         console.log(token);
