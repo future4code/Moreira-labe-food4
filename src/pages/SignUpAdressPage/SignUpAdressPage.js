@@ -43,9 +43,15 @@ const SignUpAdressPage = () => {
                 </TextAdress> 
                 <AdressForm>
                     <TextField
-                        label={'Logadouro'}
-                        type={'text'} {...register("cep")} onBlur={checkCEP}
+                        label={'CEP'}
+                        type={'number'} {...register("cep")} onBlur={checkCEP}
                         //placeholder={'Rua / Avenida'}
+                        variant={'outlined'}
+                        required                    />
+                    <TextField
+                        label={'Logradouro'}
+                        type={'text'} {...register("address" )}
+                        //placeholder={'Número'}
                         variant={'outlined'}
                         required                    />
                     <TextField
@@ -59,7 +65,7 @@ const SignUpAdressPage = () => {
                         type={'text'} {...register("complement" )}
                        // placeholder={'Apto. / Bloco'}
                         variant={'outlined'}
-                        required
+                        
                     />
                     <TextField
                         label={'Bairro'}
