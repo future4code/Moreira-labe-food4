@@ -4,6 +4,7 @@ import { GlobalContext } from './GlobalContext';
 
 const GlobalState = (props) =>{
     
+    
     return(
         <GlobalContext.Provider value={{}}>
             {props.children}
