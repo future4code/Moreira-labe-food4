@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { mainHeader, header } from "../../constants/headers";
 import { baseUrl } from "../../constants/urls";
 import useRequest from "../../hooks/useRequest";
 import useUnprotectedPage from "../../hooks/useUnprotectedPage";
@@ -35,6 +34,12 @@ const FeedPage = () => {
   const onSearch = (e) => {
     setSearch(e.target.value);
   };
+
+  const mainHeader = {
+    headers: {
+        auth: localStorage.getItem('addressToken')
+    }
+}
 
   const getFeed = async () => {
     const feed = await requestData(`${baseUrl}restaurants`, "get", mainHeader);

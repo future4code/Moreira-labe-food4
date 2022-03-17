@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { showToast } from '../constants/ui-lib';
 
 const useRequest = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -14,7 +15,7 @@ const useRequest = () => {
         }
         catch (err) {
             setIsLoading(false);
-            console.log(err.response);
+            showToast({type: "error",message: "Infelizmente não foi possível fazer o cadastro"});
         }
         finally {
             return data;
