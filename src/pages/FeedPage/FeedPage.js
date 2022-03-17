@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { mainHeader } from "../../constants/headers";
+import { mainHeader, header } from "../../constants/headers";
 import { baseUrl } from "../../constants/urls";
 import useRequest from "../../hooks/useRequest";
 import useUnprotectedPage from "../../hooks/useUnprotectedPage";
@@ -17,8 +17,6 @@ import {
   Footer,
   Items,
   FoodFilter,
-  DivCategory,
-  FilterParag,
 } from "./styled";
 import { TextField, CircularProgress } from "@material-ui/core";
 import redFeedIcon from '../../assets/img/redFeedIcon.png';
@@ -37,9 +35,6 @@ const FeedPage = () => {
   const onSearch = (e) => {
     setSearch(e.target.value);
   };
-  const onSearchCategory = (e) => {
-    setSearchCategory(e.target.value)
-  }
 
   const getFeed = async () => {
     const feed = await requestData(`${baseUrl}restaurants`, "get", mainHeader);

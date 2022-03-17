@@ -22,6 +22,7 @@ import useProtectedPage from "../../hooks/useProtectedPage";
 const SignUpAdressPage = () => {
 
   const navigate = useNavigate();
+
   const [requestData, isLoading] = useRequest();
   /* const { register, setValue, setFocus } = useForm(); */
   const [form, onChangeInput] = useFormHook({
@@ -64,14 +65,8 @@ const SignUpAdressPage = () => {
     
     localStorage.setItem("addressToken", addressToken);
     
-    if (mainHeader !== null) {
-      goToFeedPage(navigate)
-    } else {
-      showToast({
-        type: "error",
-        message: "Infelizmente não foi possível fazer o cadastro",
-      });
-    }
+    return mainHeader ? goToFeedPage(navigate) : showToast({type: "error",message: "Infelizmente não foi possível fazer o cadastro"});
+
   };
 
     return (

@@ -3,15 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import { Container, Login, Img, TextLogin, LoginForm, SignUpText } from './styled'
 import redLogo from '../../assets/img/redLogo.png'
 import { TextField, Button, CircularProgress } from '@material-ui/core';
-import { goToFeedPage, goToSignUpPage } from '../../routes/coordinators';
+import { goToChangeAdressPage, goToFeedPage, goToSignUpAdressPage, goToSignUpPage } from '../../routes/coordinators';
 import useRequest from '../../hooks/useRequest.js';
 import useFormHook from '../../hooks/useFormHook.js';
 import { baseUrl } from '../../constants/urls.js';
-import useProtectedPage from '../../hooks/useProtectedPage';
 
 const LoginPage = () => {
     const [requestData, isLoading] = useRequest();
     const [form, onChangeInput] = useFormHook({email: '', password: ''});
+    const adressToken = localStorage.getItem('addressToken')
 
     const navigate = useNavigate()
 
@@ -21,10 +21,9 @@ const LoginPage = () => {
         const {token} = await requestData(`${baseUrl}login`, 'post', form);
 
         localStorage.setItem('token', token);
-        
-        goToFeedPage(navigate);
+        localStorage.getItem('addressToken');
 
-        console.log(token);
+        return adressToken !== null ? goToFeedPage(navigate) : goToSignUpAdressPage(navigate);
     }
 
     return (
