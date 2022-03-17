@@ -1,15 +1,14 @@
 const token = localStorage.getItem('token');
-const newToken = localStorage.getItem('newToken')
+const addressToken = localStorage.getItem('addressToken')
 
-const header = {
+export const header = {
     headers: {
         auth: token
     }
 }
-export default header;
 
 export const mainHeader = {
     headers: {
-        auth: newToken
+        auth: addressToken
     }
 }
