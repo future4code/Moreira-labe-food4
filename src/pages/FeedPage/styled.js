@@ -75,7 +75,7 @@ export const FoodFilter = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 22.5rem;
+  width: 25.5rem;
   height: 2.625rem;
   margin: 1.3rem 0 1.3rem 1rem;
   padding: 0.75rem 0 0.75rem 1rem;
