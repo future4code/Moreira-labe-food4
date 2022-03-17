@@ -179,6 +179,7 @@ export const Items = styled.div`
     width: 1.688rem;
     height: 1.688rem;
     object-fit: contain;
+    cursor: pointer;
   }
 `;
 
