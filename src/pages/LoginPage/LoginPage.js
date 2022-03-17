@@ -1,29 +1,20 @@
+import GlobalContext from '../../Global/GlobalContext.js'
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import useFormHook from '../../hooks/useFormHook.js';
 import { Container, Login, Img, TextLogin, LoginForm, SignUpText } from './styled'
 import redLogo from '../../assets/img/redLogo.png'
 import { TextField, Button, CircularProgress } from '@material-ui/core';
-import { goToChangeAdressPage, goToFeedPage, goToSignUpAdressPage, goToSignUpPage } from '../../routes/coordinators';
-import useRequest from '../../hooks/useRequest.js';
-import useFormHook from '../../hooks/useFormHook.js';
-import { baseUrl } from '../../constants/urls.js';
+import useProtectedPage from '../../hooks/useProtectedPage.js';
+import { goToSignUpPage } from '../../routes/coordinators';
 
 const LoginPage = () => {
-    const [requestData, isLoading] = useRequest();
+    useProtectedPage();
     const [form, onChangeInput] = useFormHook({email: '', password: ''});
-    const adressToken = localStorage.getItem('addressToken')
-
-    const navigate = useNavigate()
+    const {isLoading, login, navigate} = React.useContext(GlobalContext);
 
     const onSubmitForm = async (evt) => {
         evt.preventDefault(); 
-
-        const {token} = await requestData(`${baseUrl}login`, 'post', form);
-
-        localStorage.setItem('token', token);
-        localStorage.getItem('addressToken');
-
-        return adressToken !== null ? goToFeedPage(navigate) : goToSignUpAdressPage(navigate);
+        login(form);
     }
 
     return (
