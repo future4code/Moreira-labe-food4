@@ -6,11 +6,14 @@ import cartIcon from '../../assets/img/cartIcon.png';
 import avatarIcon from '../../assets/img/avatarIcon.png';
 import { useNavigate } from "react-router-dom";
 import { goToFeedPage, goToCartPage, goToUserProfilePage } from "../../routes/coordinators";
+import UserProfileInfo from "../../components/UserProfileInfo/UserProfileInfo"
+import UserAddressInfo from "../../components/UserAddressInfo/UserAddressInfo"
 
 const UserProfilePage = () => {
     useUnprotectedPage();
   const navigate= useNavigate()
 
+    
 
     return (
         <Container>
@@ -18,6 +21,8 @@ const UserProfilePage = () => {
             <Header>
                 <h1>Meu perfil</h1>            
             </Header>
+            <UserProfileInfo/> 
+            <UserAddressInfo/>           
             <Footer>
             <Items>
                 <img src={redFeedIcon} onClick={() => goToFeedPage(navigate)} alt="Feed Icon" />
