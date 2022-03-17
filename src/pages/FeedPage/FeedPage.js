@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { mainHeader } from "../../constants/headers";
 import { baseUrl } from "../../constants/urls";
 import useRequest from "../../hooks/useRequest";
@@ -18,15 +19,17 @@ import {
   FoodFilter,
 } from "./styled";
 import { TextField, CircularProgress } from "@material-ui/core";
-import feedIcon from '../../assets/img/feedIcon.png';
+import redFeedIcon from '../../assets/img/redFeedIcon.png';
 import cartIcon from '../../assets/img/cartIcon.png';
 import avatarIcon from '../../assets/img/avatarIcon.png';
+import { goToFeedPage, goToCartPage, goToUserProfilePage } from "../../routes/coordinators";
 
 const FeedPage = () => {
   useUnprotectedPage();
   const [requestData, isLoading] = useRequest();
   const [viewFeed, setViewFeed] = useState([]);
   const [search, setSearch] = useState("");
+  const navigate= useNavigate()
 
   const onSearch = (e) => {
     setSearch(e.target.value);
@@ -100,13 +103,13 @@ const FeedPage = () => {
         {printCard}
         <Footer>
             <Items>
-                <img src={feedIcon} alt="Feed Icon" />
+                <img src={redFeedIcon} onClick={() => goToFeedPage(navigate)} alt="Feed Icon" />
             </Items>
             <Items>
-                <img src={cartIcon} alt="Cart Icon" />
+                <img src={cartIcon} onClick={() => goToCartPage(navigate)} alt="Cart Icon" />
             </Items>
             <Items>
-                <img src={avatarIcon} alt="Feed Icon" />
+                <img src={avatarIcon} onClick={() => goToUserProfilePage(navigate)} alt="User Icon" />
             </Items>
         </Footer>
         </>}
