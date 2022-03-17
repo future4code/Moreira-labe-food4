@@ -14,14 +14,13 @@ import { goBack, goToFeedPage, goToLoginPage } from "../../routes/coordinators";
 import useRequest from "../../hooks/useRequest";
 import { baseUrl } from "../../constants/urls";
 import useFormHook from "../../hooks/useFormHook.js";
-import { header, mainHeader } from "../../constants/headers";
-import ToastAnimated, { showToast } from "../../constants/ui-lib";
-import useProtectedPage from "../../hooks/useProtectedPage";
+import ToastAnimated from "../../constants/ui-lib";
 /* import { useForm } from "react-hook-form"; */
 
 const SignUpAdressPage = () => {
 
   const navigate = useNavigate();
+
   const [requestData, isLoading] = useRequest();
   /* const { register, setValue, setFocus } = useForm(); */
   const [form, onChangeInput] = useFormHook({
@@ -49,6 +48,11 @@ const SignUpAdressPage = () => {
     .catch((err) => {console.log(err.response)});
   }; */
 
+  const teste = {
+    headers: {
+        auth: localStorage.getItem('token')
+    }
+  }
 
   const onSubmitAdress = async (evt) => {
     evt.preventDefault();
@@ -56,7 +60,7 @@ const SignUpAdressPage = () => {
       `${baseUrl}address`,
       "put",
       form,
-      header
+      teste
     );
      console.log(token)
 
@@ -64,14 +68,8 @@ const SignUpAdressPage = () => {
     
     localStorage.setItem("addressToken", addressToken);
     
-    if (mainHeader !== null) {
-      goToFeedPage(navigate)
-    } else {
-      showToast({
-        type: "error",
-        message: "Infelizmente não foi possível fazer o cadastro",
-      });
-    }
+    return goToFeedPage(navigate);
+
   };
 
     return (
