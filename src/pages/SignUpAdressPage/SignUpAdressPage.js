@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import BackToLogin from "../../assets/img/backToLogin.png";
 import {
   Container,
@@ -10,20 +10,20 @@ import {
 } from "./styled";
 import { TextField, Button, CircularProgress } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
-import { goBack, goToLoginPage } from "../../routes/coordinators";
+import { goBack, goToFeedPage, goToLoginPage } from "../../routes/coordinators";
 import useRequest from "../../hooks/useRequest";
 import { baseUrl } from "../../constants/urls";
 import useFormHook from "../../hooks/useFormHook.js";
-import header, { mainHeader } from "../../constants/headers";
+import { header, mainHeader } from "../../constants/headers";
 import ToastAnimated, { showToast } from "../../constants/ui-lib";
 import useProtectedPage from "../../hooks/useProtectedPage";
-import { useForm } from "react-hook-form";
+/* import { useForm } from "react-hook-form"; */
 
 const SignUpAdressPage = () => {
-  useProtectedPage();
+
   const navigate = useNavigate();
   const [requestData, isLoading] = useRequest();
-  const { register, setValue, setFocus } = useForm();
+  /* const { register, setValue, setFocus } = useForm(); */
   const [form, onChangeInput] = useFormHook({
     street: "",
     number: "",
@@ -33,7 +33,7 @@ const SignUpAdressPage = () => {
     complement: ""
   });
 
-  const checkCEP = (e) => {
+  /* const checkCEP = (e) => {
     const cep = e.target.value.replace(/\D/g, "");
     console.log(cep);
     fetch(`https://viacep.com.br/ws/${cep}/json/`)
@@ -47,19 +47,25 @@ const SignUpAdressPage = () => {
         setFocus("addressNumber");
     })
     .catch((err) => {console.log(err.response)});
-  };
+  }; */
+
 
   const onSubmitAdress = async (evt) => {
     evt.preventDefault();
-    const { token } = await requestData(
+    const {token} = await requestData(
       `${baseUrl}address`,
       "put",
       form,
       header
     );
-    localStorage.setItem("newToken", token);
+     console.log(token)
+
+    const addressToken = token
+    
+    localStorage.setItem("addressToken", addressToken);
+    
     if (mainHeader !== null) {
-      goToLoginPage(navigate);
+      goToFeedPage(navigate)
     } else {
       showToast({
         type: "error",
@@ -83,18 +89,18 @@ const SignUpAdressPage = () => {
             <p>Meu endereço</p>
           </TextAdress>
           <AdressForm onSubmit={onSubmitAdress}>
-            <TextField
+           {/* <TextField
               label={"CEP"}
               type={"number"}
               {...register("cep")}
               onBlur={checkCEP}
               variant={"outlined"}
               required
-            />
+            />  */}
             <TextField
-              label={"Logradouro"}
+              label={"Rua"}
               type={"text"}
-              {...register("address")}
+/*               {...register("address")} */
               variant={"outlined"}
               name={"street"}
               value={form.street}
@@ -105,7 +111,7 @@ const SignUpAdressPage = () => {
             <TextField
               label={"Número"}
               type={"number"}
-              {...register("addressNumber")}
+/*               {...register("addressNumber")} */
               variant={"outlined"}
               name={"number"}
               value={form.number}
@@ -116,7 +122,7 @@ const SignUpAdressPage = () => {
             <TextField
               label={"Complemento"}
               type={"text"}
-              {...register("complement")}
+/*               {...register("complement")} */
               variant={"outlined"}
               name={"complement"}
               value={form.complement}
@@ -125,7 +131,7 @@ const SignUpAdressPage = () => {
             <TextField
               label={"Bairro"}
               type={"text"}
-              {...register("neighborhood")}
+/*               {...register("neighborhood")} */
               variant={"outlined"}
               name={"neighbourhood"}
               value={form.neighbourhood}
@@ -135,7 +141,7 @@ const SignUpAdressPage = () => {
             <TextField
               label={"Cidade"}
               type={"text"}
-              {...register("city")}
+/*               {...register("city")} */
               variant={"outlined"}
               name={"city"}
               value={form.city}
@@ -146,7 +152,7 @@ const SignUpAdressPage = () => {
             <TextField
               label={"Estado"}
               type={"text"}
-              {...register("uf")}
+/*               {...register("uf")} */
               variant={"outlined"}
               name={"state"}
               value={form.state}

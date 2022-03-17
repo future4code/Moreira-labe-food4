@@ -23,11 +23,9 @@ const SignUpPage = () => {
     const onSubmitForm = async (evt) => {
         evt.preventDefault();
 
-        console.log('faz alguma coisa')
-
         if (form.password === pass2) {
             const {token} = await requestData(`${baseUrl}signup` , 'post', form);
-            console.log(token);
+            /* console.log(token); */
             localStorage.setItem('token', token);
         }
         else {
