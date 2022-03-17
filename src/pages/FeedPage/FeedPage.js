@@ -78,13 +78,10 @@ const FeedPage = () => {
   ) : (
     <p>Carregando</p>
   );
-  const selectCategory = (dados) => {
-    setSearchCategory(dados)
-  }
   const foodCategory = viewFeed.map((info) => {
       return (
           <div key={info.id}>
-              <p onClick={() => selectCategory(info.category)}>{info.category}</p>
+              <p onDoubleClick={() => setSearchCategory('')} onClick={() => setSearchCategory(info.category)}>{info.category}</p>
           </div>
       )
   })
@@ -105,7 +102,6 @@ const FeedPage = () => {
 
         <FoodFilter>
             {foodCategory}
-            <p onClick={() => setSearchCategory('')}>Todos</p>
         </FoodFilter>
 
         {printCard}
