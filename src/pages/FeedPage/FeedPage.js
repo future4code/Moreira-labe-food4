@@ -17,6 +17,8 @@ import {
   Footer,
   Items,
   FoodFilter,
+  DivCategory,
+  FilterParag,
 } from "./styled";
 import { TextField, CircularProgress } from "@material-ui/core";
 import redFeedIcon from '../../assets/img/redFeedIcon.png';
@@ -28,17 +30,20 @@ const FeedPage = () => {
   useUnprotectedPage();
   const [requestData, isLoading] = useRequest();
   const [viewFeed, setViewFeed] = useState([]);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
+  const [searchCategory, setSearchCategory] = useState('');
   const navigate= useNavigate()
 
   const onSearch = (e) => {
     setSearch(e.target.value);
   };
+  const onSearchCategory = (e) => {
+    setSearchCategory(e.target.value)
+  }
 
   const getFeed = async () => {
     const feed = await requestData(`${baseUrl}restaurants`, "get", mainHeader);
     setViewFeed(feed.restaurants);
-    console.log(viewFeed);
   };
 
   useEffect(() => {
@@ -52,6 +57,9 @@ const FeedPage = () => {
           info.name.toLowerCase().includes(search.toLowerCase()) ||
           info.category.toLowerCase().includes(search.toLowerCase())
         );
+      })
+      .filter((info) => {
+        return info.category.toLowerCase().includes(searchCategory.toLowerCase())
       })
       .map((info) => {
         return (
@@ -73,13 +81,13 @@ const FeedPage = () => {
   ) : (
     <p>Carregando</p>
   );
-  
-  
-    
+  const selectCategory = (dados) => {
+    setSearchCategory(dados)
+  }
   const foodCategory = viewFeed.map((info) => {
       return (
           <div key={info.id}>
-              <p>{info.category}</p>
+              <p onClick={() => selectCategory(info.category)}>{info.category}</p>
           </div>
       )
   })
@@ -97,9 +105,12 @@ const FeedPage = () => {
           onChange={onSearch}
           variant={"outlined"}
         />
+
         <FoodFilter>
             {foodCategory}
+            <p onClick={() => setSearchCategory('')}>Todos</p>
         </FoodFilter>
+
         {printCard}
         <Footer>
             <Items>

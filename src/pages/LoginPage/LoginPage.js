@@ -10,8 +10,6 @@ import { baseUrl } from '../../constants/urls.js';
 import useProtectedPage from '../../hooks/useProtectedPage';
 
 const LoginPage = () => {
-    useProtectedPage();
-
     const [requestData, isLoading] = useRequest();
     const [form, onChangeInput] = useFormHook({email: '', password: ''});
 

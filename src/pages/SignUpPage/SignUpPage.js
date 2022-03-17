@@ -75,7 +75,8 @@ const SignUpPage = () => {
                         value={form.cpf.replace(/^(\d{3})\D*(\d{3})\D*(\d{3})\D*(\d{2})$/g,'$1.$2.$3-$4')}
                         onChange={onChangeInput}
                         title='Digite seu CPF com pontos e traço'
-                        inputProps={{ maxLength: 12 }}
+                        inputProps={{ maxLength: 14 }}
+                        pattern="[0-9]"
                         required
                     />
                     <TextField
