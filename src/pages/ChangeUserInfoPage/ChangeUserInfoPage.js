@@ -2,11 +2,12 @@ import React from "react";
 import useUnprotectedPage from "../../hooks/useUnprotectedPage";
 
 const ChangeUserInfoPage = () => {
-    useUnprotectedPage();
+  useUnprotectedPage();
 
-    return (
-        <>
-        </>
-    );
+  return (
+    <>
+        
+     </>
+  );
 };
 export default ChangeUserInfoPage;
