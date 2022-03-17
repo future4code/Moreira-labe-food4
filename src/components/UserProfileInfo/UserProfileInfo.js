@@ -1,23 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import useRequest from '../../hooks/useRequest';
-import{ baseUrl } from '../../constants/urls'
-
+import React, {useContext, useEffect} from 'react'
+import GlobalContext from '../../Global/GlobalContext';
 
 const UserProfileInfo = () => {
-    const header = {headers: {auth: localStorage.getItem('token')}} 
+  const {info, getProfileInfo} = useContext(GlobalContext);  
 
-    const [info, setInfo] = useState({})
-    const [requestData, isLoading] = useRequest()
-
-    const getProfileInfo = async () => {
-        const {user} = await requestData(`${baseUrl}profile`, "get", header);
-        setInfo(user);
-        //console.log(user)
-      };
-    
-      useEffect(() => {
-        getProfileInfo();
-      }, []); 
+  useEffect(() => {
+    getProfileInfo();
+  }, []);
 
   return (
     <div>
@@ -25,7 +14,6 @@ const UserProfileInfo = () => {
             <p>{info.name}</p>
             <p>{info.email}</p>
             <p>{info.cpf}</p>
-
         </div>
     </div>
   )

@@ -4,14 +4,14 @@ import { Container, Feed, Footer, Header, Items } from "./styled"
 import redFeedIcon from '../../assets/img/redFeedIcon.png';
 import cartIcon from '../../assets/img/cartIcon.png';
 import avatarIcon from '../../assets/img/avatarIcon.png';
-import { useNavigate } from "react-router-dom";
 import { goToFeedPage, goToCartPage, goToUserProfilePage } from "../../routes/coordinators";
 import UserProfileInfo from "../../components/UserProfileInfo/UserProfileInfo"
 import UserAddressInfo from "../../components/UserAddressInfo/UserAddressInfo"
+import GlobalContext from "../../Global/GlobalContext";
 
 const UserProfilePage = () => {
     useUnprotectedPage();
-  const navigate= useNavigate()
+    const {navigate} = React.useContext(GlobalContext);
 
     
 
