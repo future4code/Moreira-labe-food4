@@ -7,6 +7,9 @@ import {
   Container,
   Feed,
   Header,
+  FeedTitle,
+  SearchInput,
+  Cards,
   Restaurants,
   Images,
   Names,
@@ -18,18 +21,23 @@ import {
   FoodFilter,
 } from "./styled";
 import { TextField, CircularProgress } from "@material-ui/core";
-import redFeedIcon from '../../assets/img/redFeedIcon.png';
-import cartIcon from '../../assets/img/cartIcon.png';
-import avatarIcon from '../../assets/img/avatarIcon.png';
-import { goToFeedPage, goToCartPage, goToUserProfilePage } from "../../routes/coordinators";
+import redFeedIcon from "../../assets/img/redFeedIcon.png";
+import cartIcon from "../../assets/img/cartIcon.png";
+import avatarIcon from "../../assets/img/avatarIcon.png";
+import {
+  goToFeedPage,
+  goToCartPage,
+  goToUserProfilePage,
+} from "../../routes/coordinators";
 
 const FeedPage = () => {
   useUnprotectedPage();
   const [requestData, isLoading] = useRequest();
   const [viewFeed, setViewFeed] = useState([]);
-  const [search, setSearch] = useState('');
-  const [searchCategory, setSearchCategory] = useState('');
-  const navigate= useNavigate()
+  const [search, setSearch] = useState("");
+  const [searchCategory, setSearchCategory] = useState("");
+  const [buttonClicked, setButtonClicked] = useState(false);
+  const navigate = useNavigate();
 
   const onSearch = (e) => {
     setSearch(e.target.value);
@@ -37,9 +45,9 @@ const FeedPage = () => {
 
   const mainHeader = {
     headers: {
-        auth: localStorage.getItem('addressToken')
-    }
-}
+      auth: localStorage.getItem("addressToken"),
+    },
+  };
 
   const getFeed = async () => {
     const feed = await requestData(`${baseUrl}restaurants`, "get", mainHeader);
@@ -59,7 +67,9 @@ const FeedPage = () => {
         );
       })
       .filter((info) => {
-        return info.category.toLowerCase().includes(searchCategory.toLowerCase())
+        return info.category
+          .toLowerCase()
+          .includes(searchCategory.toLowerCase());
       })
       .map((info) => {
         return (
@@ -81,45 +91,82 @@ const FeedPage = () => {
   ) : (
     <p>Carregando</p>
   );
+
   const foodCategory = viewFeed.map((info) => {
-      return (
+    const onClickCategory = () => {
+      
+      if (buttonClicked === false) {
+        setButtonClicked(true);
+        setSearchCategory(info.category);
+        /* return (
           <div key={info.id}>
-              <p onDoubleClick={() => setSearchCategory('')} onClick={() => setSearchCategory(info.category)}>{info.category}</p>
+            <p onClick={() => onClickCategory()}>{info.category}</p>
           </div>
-      )
-  })
+        ); */
+      } else if (buttonClicked === true) {
+        setButtonClicked(false);
+        setSearchCategory("");
+        /* return (
+          <div key={info.id}>
+            <p onClick={() => onClickCategory()}>{info.category}</p>
+          </div>
+        ); */
+      }
+    };
+    return (
+      <div key={info.id}>
+            <p onClick={() => onClickCategory()}>{info.category}</p>
+      </div>
+    )
+  });
 
   return (
     <Container>
       <Feed>
-      {isLoading?<CircularProgress style={{"color": "red" }} size={50}/>:<>
-        <Header>
-          <h1>Ifuture</h1>
-        </Header>
-        <TextField
-          placeholder="🔍&nbsp;&nbsp;&nbsp;&nbsp;Restaurante"
-          value={search}
-          onChange={onSearch}
-          variant={"outlined"}
-        />
-
-        <FoodFilter>
-            {foodCategory}
-        </FoodFilter>
-
-        {printCard}
-        <Footer>
-            <Items>
-                <img src={redFeedIcon} onClick={() => goToFeedPage(navigate)} alt="Feed Icon" />
-            </Items>
-            <Items>
-                <img src={cartIcon} onClick={() => goToCartPage(navigate)} alt="Cart Icon" />
-            </Items>
-            <Items>
-                <img src={avatarIcon} onClick={() => goToUserProfilePage(navigate)} alt="User Icon" />
-            </Items>
-        </Footer>
-        </>}
+        {isLoading ? (
+          <CircularProgress style={{ color: "red" }} size={50} />
+        ) : (
+          <>
+            <Header>
+              <FeedTitle>
+                <h1>Ifuture</h1>
+              </FeedTitle>
+              <SearchInput>
+                <TextField
+                  placeholder="🔍&nbsp;&nbsp;&nbsp;&nbsp;Restaurante"
+                  value={search}
+                  onChange={onSearch}
+                  variant={"outlined"}
+                />
+              </SearchInput>
+              <FoodFilter>{foodCategory}</FoodFilter>
+            </Header>
+            <Cards>{printCard}</Cards>
+            <Footer>
+              <Items>
+                <img
+                  src={redFeedIcon}
+                  onClick={() => goToFeedPage(navigate)}
+                  alt="Feed Icon"
+                />
+              </Items>
+              <Items>
+                <img
+                  src={cartIcon}
+                  onClick={() => goToCartPage(navigate)}
+                  alt="Cart Icon"
+                />
+              </Items>
+              <Items>
+                <img
+                  src={avatarIcon}
+                  onClick={() => goToUserProfilePage(navigate)}
+                  alt="User Icon"
+                />
+              </Items>
+            </Footer>
+          </>
+        )}
       </Feed>
     </Container>
   );

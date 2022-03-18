@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import BackToLogin from "../../assets/img/backToLogin.png";
 import {
   Container,
@@ -10,7 +10,7 @@ import {
 } from "./styled";
 import { TextField, Button, CircularProgress } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
-import { goBack, goToFeedPage, goToLoginPage } from "../../routes/coordinators";
+import { goBack, goToFeedPage } from "../../routes/coordinators";
 import useRequest from "../../hooks/useRequest";
 import { baseUrl } from "../../constants/urls";
 import useFormHook from "../../hooks/useFormHook.js";

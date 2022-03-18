@@ -6,7 +6,7 @@ export const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    min-height: 100vh;
     width: 100%;
     background-color: #0a0909;
 `
@@ -21,6 +21,7 @@ export const HomeScreen = styled.div`
     border: none;
     border-radius: 30px;
     background-color: #e8222e;
+    position: fixed;
         @media screen and (max-width: 760px) {
             width: 100vw;
             height: 100vh;
