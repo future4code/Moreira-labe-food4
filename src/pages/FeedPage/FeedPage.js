@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { baseUrl } from "../../constants/urls";
 import useRequest from "../../hooks/useRequest";
@@ -29,30 +29,22 @@ import {
   goToCartPage,
   goToUserProfilePage,
 } from "../../routes/coordinators";
+import GlobalContext from "../../Global/GlobalContext";
 
 const FeedPage = () => {
   useUnprotectedPage();
-  const [requestData, isLoading] = useRequest();
-  const [viewFeed, setViewFeed] = useState([]);
-  const [search, setSearch] = useState("");
-  const [searchCategory, setSearchCategory] = useState("");
-  const [buttonClicked, setButtonClicked] = useState(false);
-  const navigate = useNavigate();
-
-  const onSearch = (e) => {
-    setSearch(e.target.value);
-  };
-
-  const mainHeader = {
-    headers: {
-      auth: localStorage.getItem("addressToken"),
-    },
-  };
-
-  const getFeed = async () => {
-    const feed = await requestData(`${baseUrl}restaurants`, "get", mainHeader);
-    setViewFeed(feed.restaurants);
-  };
+  const {
+    viewFeed,
+    getFeed,
+    navigate,
+    search,
+    onSearch,
+    searchCategory,
+    setSearchCategory,
+    buttonClicked,
+    setButtonClicked,
+    isLoading
+  } = useContext(GlobalContext);
 
   useEffect(() => {
     getFeed();
@@ -94,30 +86,20 @@ const FeedPage = () => {
 
   const foodCategory = viewFeed.map((info) => {
     const onClickCategory = () => {
-      
       if (buttonClicked === false) {
         setButtonClicked(true);
         setSearchCategory(info.category);
-        /* return (
-          <div key={info.id}>
-            <p onClick={() => onClickCategory()}>{info.category}</p>
-          </div>
-        ); */
       } else if (buttonClicked === true) {
         setButtonClicked(false);
         setSearchCategory("");
-        /* return (
-          <div key={info.id}>
-            <p onClick={() => onClickCategory()}>{info.category}</p>
-          </div>
-        ); */
       }
     };
+
     return (
       <div key={info.id}>
-            <p onClick={() => onClickCategory()}>{info.category}</p>
+        <p onClick={() => onClickCategory()}>{info.category}</p>
       </div>
-    )
+    );
   });
 
   return (
