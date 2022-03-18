@@ -16,6 +16,10 @@ const GlobalState = (props) =>{
     //states
     const [info, setInfo] = useState({});
     const [addressInfo, setAddressInfo] = useState({});
+    const [viewFeed, setViewFeed] = useState([]);
+    const [search, setSearch] = useState("");
+    const [searchCategory, setSearchCategory] = useState("");
+    const [buttonClicked, setButtonClicked] = useState(false);
     
     const login = async (form) => {
         const {token} = await requestData(`${baseUrl}login`, 'post', form);
@@ -37,8 +41,16 @@ const GlobalState = (props) =>{
         setAddressInfo(address);
     };
 
-    
-    const value = {navigate, isLoading, login, info, getProfileInfo, addressInfo, getAddressInfo};
+    const getFeed = async () => {
+        const feed = await requestData(`${baseUrl}restaurants`, "get", addressHeader);
+        setViewFeed(feed.restaurants);
+    };
+
+    const onSearch = (e) => {
+        setSearch(e.target.value);
+    };
+
+    const value = {navigate, isLoading, login, info, getProfileInfo, addressInfo, getAddressInfo, getFeed,viewFeed, setViewFeed, search, onSearch,searchCategory, setSearchCategory, buttonClicked, setButtonClicked};
 
     return(
         <GlobalContext.Provider value={value}>

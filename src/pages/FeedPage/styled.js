@@ -121,6 +121,9 @@ export const FoodFilter = styled.div`
     text-align: center;
     color: black;
   }
+  p:hover{
+    color: #e8222e;
+  }
 `;
 export const Cards = styled.div`
   margin-top: 12.5rem;
