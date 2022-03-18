@@ -1,25 +1,25 @@
-import React, {useContext, useEffect} from 'react';
-import useRequest from '../../hooks/useRequest';
-import{ baseUrl } from '../../constants/urls';
-import GlobalContext from '../../Global/GlobalContext.js';
+import React, { useContext, useEffect } from "react";
+import GlobalContext from "../../Global/GlobalContext.js";
+import { Address, AddressData } from "./styled.js";
+import Edit from '../../assets/img/edit.png'
+import { goToChangeAdressPage } from '../../routes/coordinators'
 
+const UserAddressInfo = () => {
+  const { addressInfo, getAddressInfo, navigate } = useContext(GlobalContext);
 
-const UserAddressInfo = () =>{
-  const {addressInfo, getAddressInfo} = useContext(GlobalContext)
-    
   useEffect(() => {
     getAddressInfo();
   }, []);
 
   return (
-    <div>
-        <div>
-            <h4>Endereço Cadastrado</h4>
-            <p>{addressInfo.street}, {addressInfo.number} - {addressInfo.neighbourhood} </p>
-           
-        </div>
-    </div>
-
-  )
-}
+    <Address>
+      <AddressData>
+          <h4>Endereço Cadastrado</h4>
+          <img src={Edit} onClick={() => goToChangeAdressPage(navigate)} alt="Edit address icon" />
+        </AddressData>
+          <p>{addressInfo.street}, {addressInfo.number} -{" "}
+          {addressInfo.neighbourhood}{" "}</p>
+    </Address>
+  );
+};
 export default UserAddressInfo;

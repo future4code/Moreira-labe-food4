@@ -1,9 +1,9 @@
 import React from "react";
 import useUnprotectedPage from '../../hooks/useUnprotectedPage.js'
 import { Container, Feed, Footer, Header, Items } from "./styled"
-import redFeedIcon from '../../assets/img/redFeedIcon.png';
-import cartIcon from '../../assets/img/cartIcon.png';
-import avatarIcon from '../../assets/img/avatarIcon.png';
+import FeedIcon from '../../assets/img/feedIcon.png';
+import RedCartIcon from '../../assets/img/redCartIcon.png';
+import AvatarIcon from '../../assets/img/avatarIcon.png';
 import { useNavigate } from "react-router-dom";
 import { goToFeedPage, goToCartPage, goToUserProfilePage } from "../../routes/coordinators";
 
@@ -20,13 +20,13 @@ const CartPage = () => {
             </Header>
             <Footer>
             <Items>
-                <img src={redFeedIcon} onClick={() => goToFeedPage(navigate)} alt="Feed Icon" />
+                <img src={FeedIcon} onClick={() => goToFeedPage(navigate)} alt="Feed Icon" />
             </Items>
             <Items>
-                <img src={cartIcon} onClick={() => goToCartPage(navigate)} alt="Cart Icon" />
+                <img src={RedCartIcon} onClick={() => goToCartPage(navigate)} alt="Cart Icon" />
             </Items>
             <Items>
-                <img src={avatarIcon} onClick={() => goToUserProfilePage(navigate)} alt="User Icon" />
+                <img src={AvatarIcon} onClick={() => goToUserProfilePage(navigate)} alt="User Icon" />
             </Items>
             </Footer>
             </Feed>
