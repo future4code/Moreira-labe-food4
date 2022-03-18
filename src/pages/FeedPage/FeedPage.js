@@ -43,6 +43,7 @@ const FeedPage = () => {
     setSearchCategory,
     buttonClicked,
     setButtonClicked,
+    onClickResCard,
     isLoading
   } = useContext(GlobalContext);
 
@@ -66,7 +67,7 @@ const FeedPage = () => {
       .map((info) => {
         return (
           <div key={info.id}>
-            <Restaurants>
+            <Restaurants onClick={() => {onClickResCard(info.id)}}>
               <Images src={info.logoUrl} alt="Restaurants" />
               <Names>{info.name}</Names>
               <TextWrap>

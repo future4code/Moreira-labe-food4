@@ -80,7 +80,7 @@ export const Title = styled.div`
     cursor: pointer;
   }
 `;
-export const ChangeInfoForm = styled.div`
+export const ChangeInfoForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 18px;

@@ -4,12 +4,19 @@ import { ChangeInfoForm, ChangeUserInfo, Container, Header, Title } from "./styl
 import GlobalContext from "../../Global/GlobalContext";
 import { goBack } from "../../routes/coordinators";
 import Back from "../../assets/img/backToLogin.png";
-import { TextField, Button } from "@material-ui/core";
+import { TextField, Button, CircularProgress } from "@material-ui/core";
+import useFormHook from '../../hooks/useFormHook.js';
 
 const ChangeUserInfoPage = () => {
   useUnprotectedPage();
+  const [form, onChangeInput] = useFormHook({name: '', email: '', cpf: ''});
+  const { navigate, editProfile, isLoading } = React.useContext(GlobalContext);
 
-  const { navigate } = React.useContext(GlobalContext);
+  const onSubmitForm = (evt) => {
+    evt.preventDefault();
+    editProfile(form);
+  }
+
   return (
     <Container>
       <ChangeUserInfo>
@@ -23,12 +30,14 @@ const ChangeUserInfoPage = () => {
             <h1>Editar</h1>
           </Title>
         </Header>
-        <ChangeInfoForm>
+        <ChangeInfoForm onSubmit={onSubmitForm}>
         <TextField
           label={"Nome"}
           placeholder={"Nome e sobrenome"}
           variant={"outlined"}
           name={"name"}
+          value={form.name}
+          onChange={onChangeInput}
           required
         />
         <TextField
@@ -37,6 +46,8 @@ const ChangeUserInfoPage = () => {
           placeholder={"email@email.com"}
           variant={"outlined"}
           name={"email"}
+          value={form.email}
+          onChange={onChangeInput}
           required
         />
         <TextField
@@ -45,12 +56,14 @@ const ChangeUserInfoPage = () => {
           placeholder={"000.000.000-00"}
           variant={"outlined"}
           name={"cpf"}
+          value={form.cpf}
+          onChange={onChangeInput}
           title="Digite seu CPF com pontos e traço"
           inputProps={{ maxLength: 14 }}
           pattern="[0-9]"
           required
         />
-        <Button>Salvar</Button>
+        <Button type={'submit'}>{isLoading?<CircularProgress style={{"color": "white"}} size={24}/>:<>Salvar</>}</Button>
         </ChangeInfoForm>
       </ChangeUserInfo>
     </Container>
