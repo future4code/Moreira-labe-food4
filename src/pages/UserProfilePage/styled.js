@@ -30,6 +30,7 @@ export const Profile = styled.div`
     height: 100vh;
     border-radius: 0;
     border: none;
+    top: 0;
   }
 `;
 export const Header = styled.div`
@@ -63,6 +64,9 @@ export const Header = styled.div`
     width: 100%;
   }
 `;
+export const HistoryContainer = styled.div`
+    text-align: center;
+`;
 export const OrderHistory = styled.p`
   width: 20.5rem;
   height: 1.125rem;
@@ -75,6 +79,7 @@ export const OrderHistory = styled.p`
   line-height: normal;
   letter-spacing: -0.39px;
   color: black;
+  text-align: start;
 `;
 export const Line = styled.div`
   width: 20.5rem;
@@ -93,9 +98,12 @@ export const Footer = styled.div`
     0 -2px 1px -1px rgba(0, 0, 0, 0.12), 0 -1px 1px 0 rgba(0, 0, 0, 0.14);
   background-color: #fff;
   position: fixed;
-  margin-bottom: 2rem;
-  bottom: 0;
+  bottom: 3rem;
   border-radius: 0 0 30px 30px;
+
+  @media screen and (max-width: 760px) {
+    bottom: 0; 
+  } 
 `;
 export const Items = styled.div`
   width: 7.5rem;

@@ -41,6 +41,7 @@ export const Feed = styled.div`
     height: 100vh;
     border-radius: 0;
     border: none;
+    top: 0;
   }
 `;
 export const Header = styled.div`
@@ -48,7 +49,7 @@ export const Header = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  top: 5.2rem;
+  top: 5rem;
   position: fixed;
   border-radius: 30px;
   @media screen and (max-width: 760px) {
@@ -208,9 +209,12 @@ export const Footer = styled.div`
     0 -2px 1px -1px rgba(0, 0, 0, 0.12), 0 -1px 1px 0 rgba(0, 0, 0, 0.14);
   background-color: #fff;
   position: fixed;
-  margin-bottom: 2rem;
-  bottom: 0;
+  bottom: 3rem;
   border-radius: 0 0 30px 30px;
+
+  @media screen and (max-width: 760px) {
+    bottom: 0;
+  }  
 `;
 export const Items = styled.div`
   width: 7.5rem;

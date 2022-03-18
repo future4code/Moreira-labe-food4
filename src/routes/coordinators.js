@@ -16,8 +16,8 @@ export const goToFeedPage = (navigate) => {
 export const goToSearchPage = (navigate) => {
     navigate('/feed/buscar');
 }
-export const goToRestaurantPage = (navigate) => {
-    navigate('/feed/:restaurante');
+export const goToRestaurantPage = (navigate, id) => {
+    navigate(`/feed/${id}`);
 }
 export const goToCartPage = (navigate) => {
     navigate('/carrinho');

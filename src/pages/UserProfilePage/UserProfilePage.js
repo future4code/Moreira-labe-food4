@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useUnprotectedPage from "../../hooks/useUnprotectedPage";
-import { Container, Profile, Footer, Header, Items, Line, OrderHistory } from "./styled"
+import { Container, Profile, Footer, Header, Items, Line, OrderHistory, HistoryContainer } from "./styled"
 import FeedIcon from '../../assets/img/feedIcon.png';
 import CartIcon from '../../assets/img/cartIcon.png';
 import RedAvatarIcon from '../../assets/img/redAvatarIcon.png';
@@ -11,9 +11,17 @@ import GlobalContext from "../../Global/GlobalContext";
 
 const UserProfilePage = () => {
     useUnprotectedPage();
-    const {navigate} = React.useContext(GlobalContext);
+    const {navigate, getHistory, history} = React.useContext(GlobalContext);
 
-    
+    useEffect(() => {
+        getHistory();
+    }, [])
+
+    const showHistory = history.length === 0 ? <p>Você não realizou nenhum pedido</p> : history.map((order) => {
+        return(
+            <>{order}</>
+        );
+    });
 
     return (
         <Container>
@@ -23,10 +31,13 @@ const UserProfilePage = () => {
             </Header>
             <UserProfileInfo/>
             <UserAddressInfo/>
-            <div>
-                <OrderHistory>Histórico de pedidos</OrderHistory>
+            <HistoryContainer>
+                <OrderHistory>
+                    Histórico de pedidos
+                </OrderHistory>
                 <Line/>
-            </div>
+                    {showHistory}
+            </HistoryContainer>
             <Footer>
             <Items>
                 <img src={FeedIcon} onClick={() => goToFeedPage(navigate)} alt="Feed Icon" />
