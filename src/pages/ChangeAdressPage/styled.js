@@ -23,6 +23,7 @@ export const ChangeAdress = styled.div`
     border-radius: 30px;
     background-color: white;
     position: fixed;
+    top: 2rem; 
     @media screen and (max-width: 760px) {
       width: 100vw;
       height: 100vh;

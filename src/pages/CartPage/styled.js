@@ -5,16 +5,19 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  min-height: 100vh;
   width: 100%;
   background-color: #0a0909;
   overflow-y: hidden;
+
   @media screen and (max-width: 760px) {
     overflow-x: hidden;
   }
 `;
 export const Feed = styled.div`
   display: flex;
+  position: fixed;
+  top: 5.2rem;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
@@ -73,11 +76,18 @@ export const Header = styled.div`
 `;
 export const Footer = styled.div`
   display: flex;
-  width: 100%;
+  align-items: center;
+  justify-content: center;
+  width: 22.5rem;
   height: 3.063rem;
   margin: 0.813rem 0 0;
-  box-shadow: 0 -1px 3px 0 rgba(0, 0, 0, 0.2), 0 -2px 1px -1px rgba(0, 0, 0, 0.12), 0 -1px 1px 0 rgba(0, 0, 0, 0.14);
+  box-shadow: 0 -1px 3px 0 rgba(0, 0, 0, 0.2),
+    0 -2px 1px -1px rgba(0, 0, 0, 0.12), 0 -1px 1px 0 rgba(0, 0, 0, 0.14);
   background-color: #fff;
+  position: fixed;
+  margin-bottom: 2rem;
+  bottom: 0;
+  border-radius: 0 0 30px 30px;
 `;
 export const Items = styled.div`
   width: 7.5rem;

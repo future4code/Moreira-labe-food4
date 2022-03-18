@@ -26,7 +26,8 @@ const UserProfilePage = () => {
             <div>
                 <OrderHistory>Histórico de pedidos</OrderHistory>
                 <Line/>
-                <Footer>
+            </div>
+            <Footer>
             <Items>
                 <img src={FeedIcon} onClick={() => goToFeedPage(navigate)} alt="Feed Icon" />
             </Items>
@@ -37,7 +38,6 @@ const UserProfilePage = () => {
                 <img src={RedAvatarIcon} onClick={() => goToUserProfilePage(navigate)} alt="User Icon" />
             </Items>
             </Footer>
-            </div>
             </Profile>
         </Container>
     );
