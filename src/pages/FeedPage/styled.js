@@ -20,10 +20,11 @@ export const Feed = styled.div`
   justify-content: space-between;
   width: 22.5rem;
   height: 40rem;
+  position: fixed;
+  top: 5rem;
   border-radius: 30px;
   background-color: white;
-  position: fixed;
-  overflow-y: scroll;
+  overflow-y: scroll; 
   cursor: default;
   ::-webkit-scrollbar {
     display: none;
@@ -47,8 +48,14 @@ export const Header = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  top: 0;
+  top: 5.2rem;
   position: fixed;
+  border-radius: 30px;
+  @media screen and (max-width: 760px) {
+    width: 100vw;
+    border-radius: 0;
+    top: 0;
+  }
 `;
 export const FeedTitle = styled.div`
   display: flex;
@@ -58,8 +65,9 @@ export const FeedTitle = styled.div`
   height: 4rem;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  box-shadow: 0 0.5px 0 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0.5px 2px 0 rgba(0, 0, 0, 0.25);
   background-color: white;
+  border-radius: 30px 30px 0 0;
   h1 {
     display: flex;
     align-items: center;
@@ -188,12 +196,18 @@ export const Price = styled.p`
 `;
 export const Footer = styled.div`
   display: flex;
-  width: 100%;
+  align-items: center;
+  justify-content: center;
+  width: 22.5rem;
   height: 3.063rem;
   margin: 0.813rem 0 0;
   box-shadow: 0 -1px 3px 0 rgba(0, 0, 0, 0.2),
     0 -2px 1px -1px rgba(0, 0, 0, 0.12), 0 -1px 1px 0 rgba(0, 0, 0, 0.14);
   background-color: #fff;
+  position: fixed;
+  margin-bottom: 2rem;
+  bottom: 0;
+  border-radius: 0 0 30px 30px;
 `;
 export const Items = styled.div`
   width: 7.5rem;
