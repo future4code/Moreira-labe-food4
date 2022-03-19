@@ -48,7 +48,7 @@ const SignUpAdressPage = () => {
     .catch((err) => {console.log(err.response)});
   }; */
 
-  const teste = {
+  const mainHeader = {
     headers: {
         auth: localStorage.getItem('token')
     }
@@ -60,7 +60,7 @@ const SignUpAdressPage = () => {
       `${baseUrl}address`,
       "put",
       form,
-      teste
+      mainHeader
     );
      console.log(token)
 
