@@ -13,12 +13,15 @@ import { baseUrl } from "../constants/urls";
 const GlobalState = (props) => {
   //headers
   const header = { headers: { auth: localStorage.getItem("token") } };
+
   const addressHeader = {
     headers: { auth: localStorage.getItem("addressToken") },
   };
+
   //hooks
   const [requestData, isLoading] = useRequest();
   const navigate = useNavigate();
+
   //states
   const [info, setInfo] = useState({});
   const [addressInfo, setAddressInfo] = useState({});
@@ -30,7 +33,7 @@ const GlobalState = (props) => {
   const [buttonClicked, setButtonClicked] = useState(false);
 
   const login = async (form) => {
-    const { token } = await requestData(`${baseUrl}login`, "post", form);
+    const { token } = await requestData(`${baseUrl}logintoken`, "post", form);
 
     localStorage.setItem("token", token);
     const addressToken = localStorage.getItem("addressToken");
@@ -41,7 +44,7 @@ const GlobalState = (props) => {
   };
 
   const editProfile = async (form) => {
-    const user = await requestData(`${baseUrl}profile`, "put", header, form);
+    const user = await requestData(`${baseUrl}profile`, "put", form, addressHeader);
 
     console.log(user);
     goBack(navigate);
@@ -59,6 +62,13 @@ const GlobalState = (props) => {
       addressHeader
     );
     setAddressInfo(address);
+  };
+
+  const editAdress = async (form) => {
+    const user = await requestData(`${baseUrl}address`, "put", form, addressHeader);
+
+    console.log(user);
+    goBack(navigate);
   };
 
   const getFeed = async () => {
@@ -118,7 +128,8 @@ const GlobalState = (props) => {
     onClickResCard,
     resInfo,
     history,
-    editProfile
+    editProfile,
+    editAdress
   };
 
   return (
