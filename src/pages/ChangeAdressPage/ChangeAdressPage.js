@@ -50,7 +50,7 @@ const ChangeAdressPage = () => {
             variant={"outlined"}
             name={"street"}
             value={form.street}
-              onChange={onChangeInput}
+            onChange={onChangeInput}
             required
           />
 

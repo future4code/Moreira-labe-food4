@@ -27,6 +27,7 @@ const GlobalState = (props) => {
   const [addressInfo, setAddressInfo] = useState({});
   const [viewFeed, setViewFeed] = useState([]);
   const [resInfo, setResInfo] = useState({});
+  const [resInfoProducts, setResInfoProducts] = useState([]);
   const [history, setHistory] = useState([]);
   const [search, setSearch] = useState("");
   const [searchCategory, setSearchCategory] = useState("");
@@ -86,8 +87,19 @@ const GlobalState = (props) => {
       "get",
       addressHeader
     );
-    setResInfo(restaurant);
+    setResInfo(restaurant.restaurant);
+    setResInfoProducts(restaurant.restaurant.products)
   };
+
+/*   const postDishes = async (id) => {
+    const postRestaurant = await requestData(
+      `${baseUrl}restaurants/${id}/order`,
+      "post",
+      addressHeader
+    );
+    console.log(id);
+    console.log('oi',postRestaurant);
+  }; */
 
   const getHistory = async (id) => {
     const { orders } = await requestData(
@@ -129,8 +141,11 @@ const GlobalState = (props) => {
     resInfo,
     history,
     editProfile,
-    editAdress
-  };
+    editAdress,
+    resInfo,
+    resInfoProducts,
+/*     postDishes,
+ */  };
 
   return (
     <GlobalContext.Provider value={value}>
