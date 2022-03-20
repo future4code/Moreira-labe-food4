@@ -12,11 +12,22 @@ import { TextField, Button, CircularProgress } from "@material-ui/core";
 import GlobalContext from "../../Global/GlobalContext";
 import { goBack } from "../../routes/coordinators";
 import ToastAnimated from "../../constants/ui-lib";
+import useFormHook from "../../hooks/useFormHook";
 
 const ChangeAdressPage = () => {
   useUnprotectedPage();
+  const [form, onChangeInput] = useFormHook({street: "",
+  number: "",
+  neighbourhood: "",
+  city: "",
+  state: "",
+  complement: ""});
+  const { navigate, editAdress, isLoading } = React.useContext(GlobalContext);
 
-  const { isLoading, navigate } = React.useContext(GlobalContext);
+  const onPutAdress = (evt) => {
+    evt.preventDefault();
+    editAdress(form);
+  }
 
   return (
     <Container>
@@ -32,12 +43,14 @@ const ChangeAdressPage = () => {
             <h1>Endereço</h1>
         </Title>
         </Header>
-        <AdressForm>
-          <TextField
+        <AdressForm onSubmit={onPutAdress}>
+        <TextField
             label={"Rua"}
             type={"text"}
             variant={"outlined"}
             name={"street"}
+            value={form.street}
+            onChange={onChangeInput}
             required
           />
 
@@ -46,6 +59,8 @@ const ChangeAdressPage = () => {
             type={"number"}
             variant={"outlined"}
             name={"number"}
+            value={form.number}
+            onChange={onChangeInput}
             required
           />
 
@@ -54,12 +69,16 @@ const ChangeAdressPage = () => {
             type={"text"}
             variant={"outlined"}
             name={"complement"}
+            value={form.complement}
+            onChange={onChangeInput}
           />
           <TextField
             label={"Bairro"}
             type={"text"}
             variant={"outlined"}
             name={"neighbourhood"}
+            value={form.neighbourhood}
+            onChange={onChangeInput}
             required
           />
           <TextField
@@ -67,6 +86,8 @@ const ChangeAdressPage = () => {
             type={"text"}
             variant={"outlined"}
             name={"city"}
+            value={form.city}
+            onChange={onChangeInput}
             required
           />
 
@@ -75,6 +96,8 @@ const ChangeAdressPage = () => {
             type={"text"}
             variant={"outlined"}
             name={"state"}
+            value={form.state}
+            onChange={onChangeInput}
             required
           />
           <Button type="submit">

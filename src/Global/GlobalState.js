@@ -13,24 +13,28 @@ import { baseUrl } from "../constants/urls";
 const GlobalState = (props) => {
   //headers
   const header = { headers: { auth: localStorage.getItem("token") } };
+
   const addressHeader = {
     headers: { auth: localStorage.getItem("addressToken") },
   };
+
   //hooks
   const [requestData, isLoading] = useRequest();
   const navigate = useNavigate();
+
   //states
   const [info, setInfo] = useState({});
   const [addressInfo, setAddressInfo] = useState({});
   const [viewFeed, setViewFeed] = useState([]);
   const [resInfo, setResInfo] = useState({});
+  const [resInfoProducts, setResInfoProducts] = useState([]);
   const [history, setHistory] = useState([]);
   const [search, setSearch] = useState("");
   const [searchCategory, setSearchCategory] = useState("");
   const [buttonClicked, setButtonClicked] = useState(false);
 
   const login = async (form) => {
-    const { token } = await requestData(`${baseUrl}login`, "post", form);
+    const { token } = await requestData(`${baseUrl}logintoken`, "post", form);
 
     localStorage.setItem("token", token);
     const addressToken = localStorage.getItem("addressToken");
@@ -41,7 +45,7 @@ const GlobalState = (props) => {
   };
 
   const editProfile = async (form) => {
-    const user = await requestData(`${baseUrl}profile`, "put", header, form);
+    const user = await requestData(`${baseUrl}profile`, "put", form, addressHeader);
 
     console.log(user);
     goBack(navigate);
@@ -61,6 +65,13 @@ const GlobalState = (props) => {
     setAddressInfo(address);
   };
 
+  const editAdress = async (form) => {
+    const user = await requestData(`${baseUrl}address`, "put", form, addressHeader);
+
+    console.log(user);
+    goBack(navigate);
+  };
+
   const getFeed = async () => {
     const feed = await requestData(
       `${baseUrl}restaurants`,
@@ -76,8 +87,19 @@ const GlobalState = (props) => {
       "get",
       addressHeader
     );
-    setResInfo(restaurant);
+    setResInfo(restaurant.restaurant);
+    setResInfoProducts(restaurant.restaurant.products)
   };
+
+/*   const postDishes = async (id) => {
+    const postRestaurant = await requestData(
+      `${baseUrl}restaurants/${id}/order`,
+      "post",
+      addressHeader
+    );
+    console.log(id);
+    console.log('oi',postRestaurant);
+  }; */
 
   const getHistory = async (id) => {
     const { orders } = await requestData(
@@ -118,8 +140,12 @@ const GlobalState = (props) => {
     onClickResCard,
     resInfo,
     history,
-    editProfile
-  };
+    editProfile,
+    editAdress,
+    resInfo,
+    resInfoProducts,
+/*     postDishes,
+ */  };
 
   return (
     <GlobalContext.Provider value={value}>
