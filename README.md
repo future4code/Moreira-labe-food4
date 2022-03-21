@@ -3,8 +3,6 @@
     <img align="center"  height="100" width="200" src="https://cdn.zeplin.io/5dd5ab8e5fb2a0060f81698f/assets/BEEEAD31-8486-4A4B-AA8C-239F38A9FB65.svg"/>
 </div>
 
-texto sobre o projeto
-
 ##
 
 ### Informações do Projeto
@@ -38,11 +36,21 @@ texto sobre o projeto
 
 ##
 
-### O que funciona:
-- 
+### Finalizado:
+- Estrutura & Padrão de Design nas Páginas.
+- Funcionalidade de Login/Sign Up Dados e Endereços.
+- Alteração de dados do usuários e endereço.
+- Integração com a API: Feed com Restaurantes / Restaurantes com seus respectivos dados e produtos.
+- Navegação entre todas as páginas com Router/Coordinator.
+- Loadings.
+- Filtros por categoria Feed.
+- Lógica de puxar histórico de pedidos.
 
-### O que não funciona:
-- 
+### Ainda não finalizado:
+- Estruturação & Design da página de Restaurante.
+- Filtro pelo Input de texto no Feed.
+- Página de Carrinho.
+- Funcionalidade de adicionar produtos ao carrinho e finalizar compra.
 
 ##
 
