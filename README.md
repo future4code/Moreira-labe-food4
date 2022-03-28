@@ -1,68 +1,93 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+<div display="inline">
+    <img align="center"  height="100" width="200" src="https://cdn.zeplin.io/5dd5ab8e5fb2a0060f81698f/assets/BEEEAD31-8486-4A4B-AA8C-239F38A9FB65.svg"/>
+</div>
 
-In the project directory, you can run:
+##
 
-### `npm start`
+### Informações do Projeto
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+##
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Participantes: 
+- @andreyna1808
+- @Danilo-Silverio
+- @enzopasche
+- @christenLeo
+- @sergiohscl
 
-### `npm test`
+### Gerenciamento do Projeto:
+- https://trello.com/b/48sOZral/labefood-workflow
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Wireframe & Design:
+- https://app.zeplin.io/project/5dd5ab8e5fb2a0060f81698f
 
-### `npm run build`
+### Link do Surge
+- https://nosso-ifuture.surge.sh
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Fluxograma:
+<div>
+<img align="center"  height="500" width="700" src="https://user-images.githubusercontent.com/94642853/158240002-95cf16c5-f1c4-49f1-802c-de2819be83c1.jpg"/>
+</div>
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+##
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Funcionalidades do Projeto
 
-### `npm run eject`
+##
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Finalizado:
+- Estrutura & Padrão de Design nas Páginas.
+- Funcionalidade de Login/Sign Up Dados e Endereços.
+- Alteração de dados do usuários e endereço.
+- Integração com a API: Feed com Restaurantes / Restaurantes com seus respectivos dados e produtos.
+- Navegação entre todas as páginas com Router/Coordinator.
+- Loadings.
+- Filtros por categoria Feed.
+- Lógica de puxar histórico de pedidos.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Ainda não finalizado:
+- Estruturação & Design da página de Restaurante.
+- Filtro pelo Input de texto no Feed.
+- Página de Carrinho.
+- Funcionalidade de adicionar produtos ao carrinho e finalizar compra.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+##
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Imagens
 
-## Learn More
+##
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Home Screen
+<div>
+<img align="center"  height="500" width="300" src="https://user-images.githubusercontent.com/94642853/158796436-1718e02d-f9a2-4c26-a089-71cfd27af433.png"/>
+</div>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+##
 
-### Code Splitting
+- Login
+<div>
+<img align="center"  height="500" width="300" src="https://user-images.githubusercontent.com/94642853/158797049-a7438822-aab3-4cdf-9b70-7c55295a6f74.png"/>
+</div>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+##
 
-### Analyzing the Bundle Size
+- Cadastro
+<div>
+<img align="center"  height="500" width="300" src="https://user-images.githubusercontent.com/94642853/158797247-da00b103-f2cf-433d-b6c9-71df1786f4aa.png"/>
+</div>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+##
 
-### Making a Progressive Web App
+- Cadastro Endereço
+<div>
+<img align="center"  height="500" width="300" src="https://user-images.githubusercontent.com/94642853/158797432-a4211b85-368d-45f9-87bc-a2bbdcb99099.png"/>
+</div>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+##
 
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Feed
+<div>
+<img align="center"  height="500" width="300" src="https://user-images.githubusercontent.com/94642853/158798198-c7a6c413-62d3-4f3e-82bf-01f43acb563c.png"/>
+<img align="center"  height="500" width="300" src="https://user-images.githubusercontent.com/94642853/158798334-6a29c5e0-7306-4a15-959b-8b4fbbb4cb3a.png"/>
+</div>
